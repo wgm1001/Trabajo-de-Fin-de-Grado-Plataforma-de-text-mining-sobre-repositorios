@@ -7,7 +7,7 @@ las transformaciones de a JSON si ser pide
 """
 import json 
 
-class Proyecto:  
+class Repolsitorio:  
     def __init__(self,pid=None,name=None,description=None,issues=None,labels=None):
         self.pid=pid
         self.name=name
@@ -16,11 +16,15 @@ class Proyecto:
         self.labels=labels
     
     def makeJSONList(self):
-        if isinstance(self.issues, json):
-            self.issues=json.loads(self.issues)
+        if isinstance(self.labels, json):
+            for i in self.issues:
+                i['notes']=json.loads(i['notes'])
+                i['labels']=json.loads(i['labels'])
             self.labels=json.loads(self.labels)
         
     def makeListJSON(self):
-        if isinstance(self.issues, json):
-            self.issues=json.dumps(self.issues)
+        if isinstance(self.labels, json):
+            for i in self.issues:
+                i['notes']=json.dumps(i['notes'])
+                i['labels']=json.dumps(i['labels'])
             self.labels=json.dumps(self.labels)

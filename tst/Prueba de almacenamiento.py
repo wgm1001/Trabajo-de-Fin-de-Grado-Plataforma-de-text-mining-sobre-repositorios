@@ -23,7 +23,6 @@ labels = project.labels.list(all=True)
 
 con =  mysql.connector.connect(host="localhost", user="Willow", passwd="Garcia", db="TFG")
 try:
-
     cursor = con.cursor(prepared=True)
     sql_insert_query = """ INSERT INTO prueba
                        (idPrueba, PruebaJSON, PruebaFecha) 
@@ -33,7 +32,6 @@ try:
     for x in issues: 
         issues_t.append({'id':x.iid,'description':x.description,'title':x.title,'labels':x.labels})               
     prueba=json.dumps(issues_t)
-    
     ins = (id, prueba, datetime.now())
     cursor.execute(sql_insert_query, ins)
     con.commit()

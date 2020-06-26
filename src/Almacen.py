@@ -13,25 +13,35 @@ class Almacen:
     conexion={'host':'localhost','user':'Willow','passwd':'Garcia','db':'TFG'}
     #Con este metodo almacenaremos en la base de datos los proyectos recuperados
     @staticmethod
-    def guardar(project):
+    def guardar(repositorio):
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
-            cursor = con.cursor(prepared=True)
-            sql_insert_query = ' INSERT INTO Proyectos (idProyecto, Nombre, Descripcion, issues, etiquetas, momento) VALUES (%s,%s,%s,%s,%s,%s)'                                      
-            project.makeListJSON()
-            ins = (project.pid,project.name,project.description,project.issues,project.labels, datetime.now())
-            cursor.execute(sql_insert_query, ins)
+            cursorRepositorios = con.cursor(prepared=True)
+            momento=datetime.now()
+            sql_insert_query = ' INSERT INTO Repositorios (idProyecto, Nombre, Descripcion, Momento) VALUES (%s,%s,%s,%s)'                                      
+            ins = (repositorio.pid,repositorio.name,repositorio.description, momento)
+            cursorRepositorios.execute(sql_insert_query, ins)
+            cursorLabels = con.cursor(prepared=True)
+            for l in repositorio.labels:
+                sql_insert_query = ' INSERT INTO Labels (idProyecto, Momento, idLabel,nombre,color,color_texto,descripcion) VALUES (%s,%s,%s,%s,%s,%s,%s)'                                      
+                ins = (repositorio.pid,momento,l['id'],l['name'],l['color'],l['text_color'],l['description'])
+                cursorLabels.execute(sql_insert_query, ins)
+            cursorIssues = con.cursor(prepared=True)
+            for i in repositorio.issues:
+                sql_insert_query = ' INSERT INTO Issues (idProyecto, Momento, idIssue,titulo,descripcion,etiquetas,comentarios,status) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)'                                      
+                ins = (repositorio.pid,momento,i['id'],i['title'],i['description'],i['labels'],i['notes'],i['status'])
+                cursorIssues.execute(sql_insert_query, ins)
             con.commit()
         finally:
             con.close()
     
-    @staticmethod
-    def sacarTodos():
+    @staticmethod 
+    def sacarRepositorios():
         projects=None
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
             cursor = con.cursor(prepared=True)
-            sql_insert_query = ' SELECT * FROM Proyectos '                                      
+            sql_insert_query = ' SELECT * FROM Proyectos'                                      
             cursor.execute(sql_insert_query)
             con.commit()
             projects=cursor.fetchAll()
