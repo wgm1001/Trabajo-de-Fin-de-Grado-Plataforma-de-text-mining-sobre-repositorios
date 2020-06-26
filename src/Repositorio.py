@@ -7,7 +7,7 @@ las transformaciones de a JSON si ser pide
 """
 import json 
 
-class Repolsitorio:  
+class Repositorio:  
     def __init__(self,pid=None,name=None,description=None,issues=None,labels=None):
         self.pid=pid
         self.name=name

@@ -29,7 +29,7 @@ class Almacen:
             cursorIssues = con.cursor(prepared=True)
             for i in repositorio.issues:
                 sql_insert_query = ' INSERT INTO Issues (idProyecto, Momento, idIssue,titulo,descripcion,etiquetas,comentarios,status) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)'                                      
-                ins = (repositorio.pid,momento,i['id'],i['title'],i['description'],i['labels'],i['notes'],i['status'])
+                ins = (repositorio.pid,momento,i['id'],i['title'],i['description'],i['labels'],i['notes'],i['state'])
                 cursorIssues.execute(sql_insert_query, ins)
             con.commit()
         finally:
