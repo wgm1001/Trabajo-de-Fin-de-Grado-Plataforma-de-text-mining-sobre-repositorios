@@ -1,4 +1,4 @@
-import mysql.connector# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 @author: Willow Maui García Moreno
 Clase Proyecto
@@ -16,14 +16,14 @@ class Repositorio:
         self.labels=labels
     
     def makeJSONList(self):
-        if isinstance(self.labels, json):
+        if  isinstance(self.labels, str):
             for i in self.issues:
                 i['notes']=json.loads(i['notes'])
                 i['labels']=json.loads(i['labels'])
             self.labels=json.loads(self.labels)
         
     def makeListJSON(self):
-        if isinstance(self.labels, json):
+        if not isinstance(self.labels, str):
             for i in self.issues:
                 i['notes']=json.dumps(i['notes'])
                 i['labels']=json.dumps(i['labels'])

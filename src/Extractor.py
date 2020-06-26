@@ -22,10 +22,7 @@ class Extractor:
         project.name=self.__project.name
         project.description=self.__project.description
         issues=[]  
-        i=0
         for x in self.__project.issues.list(all=True):
-            i+=1
-            print(i)
             issues.append({'id':x.iid,'title':x.title,'description':x.description,'labels':x.labels,'notes':[n.body for n in x.notes.list()],'state':x.state})
         project.issues=issues
         labels=[]  

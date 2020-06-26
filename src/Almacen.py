@@ -18,6 +18,7 @@ class Almacen:
         try:
             cursorRepositorios = con.cursor(prepared=True)
             momento=datetime.now()
+            repositorio.makeListJSON()
             sql_insert_query = ' INSERT INTO Repositorios (idProyecto, Nombre, Descripcion, Momento) VALUES (%s,%s,%s,%s)'                                      
             ins = (repositorio.pid,repositorio.name,repositorio.description, momento)
             cursorRepositorios.execute(sql_insert_query, ins)
@@ -41,12 +42,10 @@ class Almacen:
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
             cursor = con.cursor(prepared=True)
-            sql_insert_query = ' SELECT * FROM Proyectos'                                      
+            sql_insert_query = ' SELECT * FROM Repositorios'                                      
             cursor.execute(sql_insert_query)
             con.commit()
             projects=cursor.fetchAll()
-            for x in projects:
-                x.makeJSONList()
         finally:
             con.close()
         return projects

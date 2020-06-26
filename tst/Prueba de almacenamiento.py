@@ -30,12 +30,13 @@ try:
     
     issues_t=[]  
     for x in issues: 
-        issues_t.append({'id':x.iid,'description':x.description,'title':x.title,'labels':x.labels})               
+        issues_t.append({'id':x.iid,'description':x.description,'title':x.title,'labels':x.labels})         
     prueba=json.dumps(issues_t)
+    print(prueba.__class__,str)
+    print(isinstance(prueba,str))
     ins = (id, prueba, datetime.now())
     cursor.execute(sql_insert_query, ins)
     con.commit()
-
     cur = con.cursor()
     cur.execute("SELECT * FROM Prueba")
     for row in cur.fetchall():
