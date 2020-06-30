@@ -14,4 +14,6 @@ proyecto=extractor.extraer()
 print('Extraido repostiorio')
 Almacen.Almacen.guardar(proyecto)
 print('Almacenado')
-print(Almacen.Almacen.sacarRepositorios())
+repositorios=Almacen.Almacen.sacarRepositorios()
+for i in repositorios:
+    print('id ',i.pid,' description ',i.description)

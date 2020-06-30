@@ -12,4 +12,4 @@ print(proyecto.pid)
 print(proyecto.name)
 print(proyecto.description)
 for i in proyecto.issues:
-    print(i)
+    print(i.iid,end=' ')
