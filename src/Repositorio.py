@@ -3,7 +3,7 @@
 @author: Willow Maui García Moreno
 Clase Proyecto
 Clase dedicada a almacenar los distintos valores de un proyecto y hacer
-las transformaciones de a JSON si ser pide
+las transformaciones a JSON si se pide
 """
 import json 
 
@@ -18,13 +18,9 @@ class Repositorio:
     def makeJSONList(self):
         if  isinstance(self.labels, str):
             for i in self.issues:
-                i['notes']=json.loads(i['notes'])
-                i['labels']=json.loads(i['labels'])
-            self.labels=json.loads(self.labels)
+                i.makeJSONList()
         
     def makeListJSON(self):
         if not isinstance(self.labels, str):
             for i in self.issues:
-                i['notes']=json.dumps(i['notes'])
-                i['labels']=json.dumps(i['labels'])
-            self.labels=json.dumps(self.labels)
+                i.makeListJSON()
