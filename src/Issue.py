@@ -8,7 +8,7 @@ las transformaciones a JSON si se pide
 import json 
 
 class Issue:  
-    def __init__(self,iid=None,title=None,description=None,labels=None,notes=None,state=None):
+    def __init__(self,iid=None,title=None,description=None,labels=[],notes=[],state=None):
         self.iid=iid
         self.title=title
         self.description=description

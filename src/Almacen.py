@@ -40,12 +40,18 @@ class Almacen:
             con.close()
 
     @staticmethod
-    def sacarRepositorios():
+    def sacarRepositorios(idRepositorio=None,moment=None):
         projects=[]
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
             cursor = con.cursor(buffered=True,dictionary=True)
-            sql_select_query = ' SELECT * FROM repositorios'                                      
+            if idRepositorio is None:
+                sql_select_query = ' SELECT * FROM repositorios'
+            else:
+                if (moment is None):
+                    sql_select_query = ' SELECT * FROM repositorios where idProyecto='+str(idRepositorio)+' and momento=(select max(momento) from repositorios where idProyecto='+str(idRepositorio)+')'
+                else:
+                     sql_select_query = ' SELECT * FROM repositorios where idProyecto='+str(idRepositorio)+' and momento='+str(moment)                              
             cursor.execute(sql_select_query)
             cursorIssues = con.cursor(dictionary=True)
             sql_select_issues_query = ' SELECT * FROM issues where idProyecto=%s and momento=%s' 
@@ -65,4 +71,5 @@ class Almacen:
                 p.makeJSONList()
         finally:
             con.close()
-        return projects
+        ret=projects[0] if idRepositorio is not None else projects
+        return ret
