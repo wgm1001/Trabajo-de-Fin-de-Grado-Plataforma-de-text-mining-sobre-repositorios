@@ -1,3 +1,5 @@
 
 *.pyc
 lib/Token.txt
+*.pyc
+lib/Token.txt
