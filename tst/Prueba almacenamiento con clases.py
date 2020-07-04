@@ -7,18 +7,26 @@ Prueba sobre las clases de la fase de extracción
 from src import Extractor
 from src import Almacen
 
-
-#extractor=Extractor.Extractor('foundrynet/dnd5e')
-#print('Creado extractor')
-#proyecto=extractor.extraer()
-#print('Extraido repostiorio')
-#Almacen.Almacen.guardar(proyecto)
-print('Almacenado')
-coun=35
-repositorios=Almacen.Almacen.sacarRepositorios()
-for p in repositorios:
+def prueba_almacenamiento():
+    '''
+    >>> prueba_almacenamiento()
+    id  19766159  description  Proyecto de prueba del TFG para la extracción de issues.
+    iid  1  labels  ['learn']
+    iid  2  labels  ['enhancement']
+    iid  3  labels  ['learn']
+    iid  4  labels  ['critical', 'enhancement']
+    iid  5  labels  ['learn']
+    iid  6  labels  ['enhancement']
+    
+    '''
+    extractor=Extractor.Extractor('wgm1001/TFG-tst')
+    proyecto=extractor.extraer()
+    Almacen.Almacen.guardar(proyecto)
+    p=Almacen.Almacen.sacarRepositorios(proyecto.pid)
     print('id ',p.pid,' description ',p.description)
     for i in p.issues:
-        if coun>0:
-            print('iid ',i.iid,' labels ',i.labels, i.labels.__class__) 
-            coun-=1
+            print('iid ',i.iid,' labels ',i.labels) 
+        
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
