@@ -15,7 +15,7 @@ HOST='http://gitlab.com/'
 TOKEN_PATH='..'+os.path.sep+'lib'+os.path.sep+'Token.txt'
 TOKEN= open(TOKEN_PATH).read()
 gl = gitlab.Gitlab(HOST, private_token=TOKEN)
-project_url='foundrynet/dnd5e'
+project_url='foundrynet/dnd5e' #id 8860457
 project= gl.projects.get(project_url)
 id=project.id
 issues=project.issues.list()
