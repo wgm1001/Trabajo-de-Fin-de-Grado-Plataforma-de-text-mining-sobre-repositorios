@@ -14,7 +14,7 @@ from nltk.corpus import stopwords
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn import svm
-'''
+
 idioma='spanish'
 stop=True
 stopWords = set(stopwords.words(idioma))
@@ -81,9 +81,10 @@ bolsa.fit(issues_text)
 x=bolsa.transform(issues_text).toarray()
 x=np.array(x)
 X_train, X_test, Y_train, Y_test= train_test_split(x, y, random_state=ran_sta)
-clasificador = OneVsRestClassifier(svm.SVC(kernel='linear', probability=True,random_state=ran_sta))
+clasificador = OneVsRestClassifier(svm.SVC(random_state=ran_sta))
 clasificador.fit(X_train, Y_train)
 pred=clasificador.predict(X_test)
 print(Y_test,pred)
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 print('Accuracy score: ', format(accuracy_score(Y_test, pred)))
+'''

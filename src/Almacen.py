@@ -7,9 +7,9 @@ de recuperarlos
 """
 import mysql.connector
 from datetime import datetime
-from src import Repositorio
-from src import Label
-from src import Issue
+from src.Repositorio import Repositorio
+from src.Label import Label
+from src.Issue import Issue
 
 class Almacen:
     #parametros de la conexion
@@ -61,14 +61,14 @@ class Almacen:
                 cursorIssues.execute(sql_select_issues_query, (p['idProyecto'],p['momento']))
                 issues_d=[]
                 for i in cursorIssues:
-                    # issues_d.append(Issue.Issue(iid=i['idIssue'],title=i['titulo'],description=i['descripcion'],labels=i['etiquetas'],notes=i['comentarios'],state=i['status']))
-                    issues_d.append(Issue.Issue(iid=i[2],title=i[3],description=i[4],labels=i[5],notes=i[6],state=i[7]))
+                    # issues_d.append(Issue(iid=i['idIssue'],title=i['titulo'],description=i['descripcion'],labels=i['etiquetas'],notes=i['comentarios'],state=i['status']))
+                    issues_d.append(Issue(iid=i[2],title=i[3],description=i[4],labels=i[5],notes=i[6],state=i[7]))
                 cursorLabels.execute(sql_select_labels_query, (p['idProyecto'],p['momento']))
                 labels_d=[]
                 for l in cursorLabels:
-                    # labels_d.append(Label.Label(lid=l['idLabel'],name=l['nombre'],color=l['color'],text_color=l['color_texto'],description=l['descripcion']))
-                    labels_d.append(Label.Label(lid=l[2],name=l[3],color=l[4],text_color=l[5],description=l[6]))
-                projects.append(Repositorio.Repositorio(pid=p['idProyecto'],name=p['Nombre'],description=p['Descripcion'],issues=issues_d,labels=labels_d))
+                    # labels_d.append(Label(lid=l['idLabel'],name=l['nombre'],color=l['color'],text_color=l['color_texto'],description=l['descripcion']))
+                    labels_d.append(Label(lid=l[2],name=l[3],color=l[4],text_color=l[5],description=l[6]))
+                projects.append(Repositorio(pid=p['idProyecto'],name=p['Nombre'],description=p['Descripcion'],issues=issues_d,labels=labels_d))
             for p in projects:
                 p.makeJSONList()
         finally:
