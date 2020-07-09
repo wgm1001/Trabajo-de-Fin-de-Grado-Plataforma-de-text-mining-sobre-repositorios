@@ -8,7 +8,7 @@ from src.TranscriptorSVM import TranscriptorSVM
 from src.ModeloSVM import ModeloSVM
 from src.TranscriptorMultinomialNB import TranscriptorMultinomialNB
 class Predictor:
-    def __init__(self,stopW=True,idioma='english',comentarios=True,repositorios=[],modelo='SVM',random_state=None):
+    def __init__(self,modelo='SVM',random_state=None):
         self.modelo=modelo
         if modelo=='SVM':
             trans=TranscriptorSVM.transcribir(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios)
