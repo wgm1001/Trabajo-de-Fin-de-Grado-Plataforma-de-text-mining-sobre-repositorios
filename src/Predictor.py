@@ -4,31 +4,47 @@
 Clase Predictor
 Clase encraga de realizar el proceso de entrenamiento y predicción
 """
-from src.TranscriptorSVM import TranscriptorSVM
-from src.ModeloSVM import ModeloSVM
-from src.TranscriptorMultinomialNB import TranscriptorMultinomialNB
+from src.ModeloSingleClass import ModeloSingleClass
+from src.ModeloMultiClass import ModeloMultiClass
+from src.TranscriptorMultiClass import TranscriptorMultiClass
+from src.TranscriptorSingleClass import TranscriptorSingleClass
+
 class Predictor:
-    def __init__(self,modelo='SVM',random_state=None):
+    singleClass=ModeloSingleClass.switchAlgoritmo.keys()
+    multiClass=ModeloMultiClass.switchAlgoritmo.keys()
+    def __init__(self,modelo='MultinomialNB'):
         self.modelo=modelo
-        if modelo=='SVM':
-            self.clf=ModeloSVM(random_state=random_state)
-        if modelo=='MultinomialNB':
-            self.clf=ModeloSVM()
-    def entrenar(self,stopW=True,idioma='english',comentarios=True,repositorios=[],):
-        if self.modelo=='SVM':
-            trans=TranscriptorSVM.transcribir(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios)
-            X=trans[0]
-            y=trans[1]
-            self.labels=trans[2]
-        if self.modelo=='MultinomialNB':
-            trans=TranscriptorMultinomialNB.transcribir(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios)
-            X=trans[0]
-            y=trans[1]
-            self.labels=None
+        if modelo not in Predictor.singleClass and modelo not in Predictor.multiClass:
+            raise Exception('Modelo desconocido')
+        if modelo in Predictor.singleClass:
+            self.clf=ModeloSingleClass(mod=modelo)
+        if modelo in Predictor.multiClass:
+            self.clf=ModeloMultiClass(mod=modelo)
+            
+    def entrenar(self,repositorios,stopW=True,idioma='english',comentarios=True,metodo='CV',sinEtiqueta=True):
+        self.__checkArgs(stopW=stopW,comentarios=comentarios,repositorios=repositorios,sinEtiqueta=sinEtiqueta)
+        if self.modelo in Predictor.multiClass:
+            self.trans=TranscriptorMultiClass()
+        if self.modelo in Predictor.singleClass:
+            self.trans=TranscriptorSingleClass()
+        transcripcion=self.trans.transcribir_entrenar(repositorios=repositorios,sinEtiqueta=sinEtiqueta,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo)
+        X=transcripcion[0]
+        y=transcripcion[1]
         self.clf.entrenar(X,y)
     def predecir(self,y):
+        y=self.trans.transcribir(y)
         pred=self.clf.predecir(y)
-        if self.modelo=='SVM':
-            pred=TranscriptorSVM.recuperar(pred,self.labels)
+        if self.modelo in Predictor.multiClass:
+            pred=self.trans.recuperar(pred)
         return pred
+    def __checkArgs(self,stopW,comentarios,repositorios,sinEtiqueta):
+        if not isinstance(stopW,bool):
+            raise Exception('Argumentos incorrectos')
+        if not isinstance(comentarios,bool):
+            raise Exception('Argumentos incorrectos')
+        if not isinstance(sinEtiqueta,bool):
+            raise Exception('Argumentos incorrectos')
+        if not repositorios:
+            raise Exception('Argumentos incorrectos')
+        
         

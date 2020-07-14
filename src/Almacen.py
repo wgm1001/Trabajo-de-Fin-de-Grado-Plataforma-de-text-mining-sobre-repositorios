@@ -17,6 +17,8 @@ class Almacen:
     #Con este metodo almacenaremos en la base de datos los proyectos recuperados
     @staticmethod
     def guardar(repositorio):
+        if not isinstance(repositorio,Repositorio):
+            raise Exception('Tipo a guardar incorrecto')
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
             cursorRepositorios = con.cursor(prepared=True)
@@ -41,6 +43,7 @@ class Almacen:
 
     @staticmethod
     def sacarRepositorios(idRepositorio=None,moment=None):
+        Almacen.__checkArgsSacar(idRepositorio=idRepositorio,moment=moment)
         projects=[]
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
         try:
@@ -73,5 +76,18 @@ class Almacen:
                 p.makeJSONList()
         finally:
             con.close()
+        if not projects and idRepositorio is not None:
+            raise Exception('Id de repositorio no encontrado.')
+        if not projects and idRepositorio is None:
+            raise Exception('No hay repositorios guardados.')
         ret=projects[0] if idRepositorio is not None else projects
         return ret
+    
+    @staticmethod
+    def __checkArgsSacar(idRepositorio,moment):
+        if idRepositorio is not None and not isinstance(idRepositorio,int):
+            raise Exception('Tipos a extraer incorrectos')
+        if moment is not None and idRepositorio is None:
+            raise Exception('Tipos a extraer incorrectos')
+        if moment is not None and not isinstance(moment,int):
+            raise Exception('Tipos a extraer incorrectos')

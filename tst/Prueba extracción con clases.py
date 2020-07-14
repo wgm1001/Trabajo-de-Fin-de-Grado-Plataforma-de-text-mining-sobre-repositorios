@@ -5,10 +5,40 @@ Prueba sobre las clases de la fase de extracción
 """
 
 from src import Extractor
-
+def ext_bad_rep():
+    '''
+    Intenamos sacar un proyecto erróneo
+    
+    >>> ext_bad_rep()
+    Detecta el fallo
+    
+    '''
+    try:
+        Extractor.Extractor('wgm1001/mal_puesto_TFG-tst')
+    except Exception as e:
+        if str(e)=='Proyecto no encontrado':
+            print('Detecta el fallo')
+        else:
+            raise
+def ext_proj_sin_permiso():
+    '''
+    Intentamos extraer repositorio con un token inválido
+    
+    >>> ext_proj_sin_permiso()
+    Detecta el fallo
+    
+    '''
+    try:
+        Extractor.Extractor('wgm1001/mal_puesto_TFG-tst',token='Invalido')
+    except Exception as e:
+        if str(e)=='Permisos insuficientes':
+            print('Detecta el fallo')
+        else:
+            raise
+    
 def ext_pid():
     '''
-    Intentamos extraer la id del proyecto
+    Extraemos la id del proyecto
     
     >>> ext_pid()
     19766159
@@ -19,7 +49,7 @@ def ext_pid():
     
 def ext_name():
     '''
-    Intentamos extraer el nombre del proyecto
+    Extraemos el nombre del proyecto
     
     >>> ext_name()
     Proyecto de prueba del TFG
@@ -30,7 +60,7 @@ def ext_name():
     
 def ext_desc():
     '''
-    Intentamos extraer la descripción
+    Extraemos la descripción y comprobamos su veracidad
     
     >>> ext_desc()
     Proyecto de prueba del TFG para la extracción de issues.
@@ -55,7 +85,7 @@ def num_issues():
     
 def ext_com():
     '''
-    Intentamos Sacar los comentarios de las issues
+    Sacamos los comentarios de las issues
 
     >>> ext_com()
     ['Lo que planteaba como modelo es el Esquema']

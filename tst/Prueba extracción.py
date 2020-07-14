@@ -10,15 +10,17 @@ HOST='http://gitlab.com/'
 TOKEN_PATH='..'+os.path.sep+'lib'+os.path.sep+'Token.txt'
 TOKEN= open(TOKEN_PATH).read()
 gl = gitlab.Gitlab(HOST, private_token=TOKEN)
-#project_id = 13083  #GitLab FOSS 
 #project_id = 8860457  #Foundry VTT 5th Edition
 #project = gl.projects.get(project_id)
-# Repositorio de ejemplo https://gitlab.com/gitlab-org/gitlab-foss
 # Repositorio de ejemplo https://gitlab.com/foundrynet/dnd5e
 #project_url='gitlab-org/gitlab-foss'
-project_url='foundrynet/dnd5e'
-project= gl.projects.get(project_url)
-
+project_url='foundrynet/dnd5e' #GitlabGetError: 404: 404 Project Not Found si lo metes mal
+try:
+    project= gl.projects.get(project_url)
+except  Exception as e:
+    if e.response_code==404:
+        print('Repositorio no encontrado')
+    raise
 #Doc https://docs.gitlab.com/ce/api/issues.html
 #issues=project.issues.list(all=True)
 issues=project.issues.list()

@@ -10,8 +10,12 @@ import gitlab
 import os
 class Conector:
     @staticmethod
-    def conectar():
+    def conectar(token=None):
         HOST='http://gitlab.com/'
-        TOKEN_PATH='..'+os.path.sep+'lib'+os.path.sep+'Token.txt'
-        TOKEN= open(TOKEN_PATH).read()
+        if token is None:
+            TOKEN_PATH='..'+os.path.sep+'lib'+os.path.sep+'Token.txt'
+            TOKEN= open(TOKEN_PATH).read()
+        else:
+            TOKEN=token
         return gitlab.Gitlab(HOST, private_token=TOKEN)
+            
