@@ -25,7 +25,6 @@ class Extractor:
     para este proyecto
     """
     def extraer(self):
-
             project=Repositorio()
             project.pid=self.__project.id
             project.name=self.__project.name

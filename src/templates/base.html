@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html style="text-align: center;">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/base.css')}}"
+    <title></title>
+  </head>
+  <body>
+    <h1>Trabajo de Fin de Grado: Plataforma de text mining sobre repositorios</h1>
+    <p>Realizado por: Willow Maui García Moreno</p>
+	<br></br>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li> {{message}} </li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+	{% block content %}
+	{% endblock %}
+	<br></br>
+    <div >
+		<form action="/" >
+			<button type="submit" title="Vuelve a la página inicial">Volver al inicio</button>
+		</form>
+	</div>
+  </body>
+</html>

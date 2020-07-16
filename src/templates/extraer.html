@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content%}
+	<form style="text-align: center;" method="POST">
+		{% from "Macro_forms.html" import show_form %}
+		{{show_form(formulario.url,'Introduzca la URL del repositorio a extraer. Por ejemplo:<< https://gitlab.com/wgm1001/TFG-tst >>.')}}
+		{{show_form(formulario.token,'Si desea utilizar su propio token de acceso personal de gitlab introduzcalo aquí, en caso contrario se utilizará el predefinido de esta aplicación.')}}
+		<button type="submit" title="Extrae un repositorio para tenerlo disponible posteriormente a la hora de entrenar al modelo">Extraer</button>
+	</form>
+	<div>Una vez introducidos los datos y enviados puede tardar en función del tamaños del repositorio, por favor espere.</div>
+{% endblock %}

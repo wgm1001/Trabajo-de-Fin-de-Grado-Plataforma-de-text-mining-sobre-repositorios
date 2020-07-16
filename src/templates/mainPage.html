@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content%}
+	<p style="text-align: center;">Opciones a realizar:</p>
+    <div style="text-align: center;">
+		<div>Extrae un repositorio para tenerlo disponible posteriormente a la hora de entrenar al modelo.</div>
+		<form action="./Extraer/" >
+			<button type="submit" title="Extrae un repositorio para tenerlo disponible posteriormente a la hora de entrenar al modelo">Extraer</button>
+		</form>
+	</div>
+	<br></br>
+	<div style="text-align: center;">
+		<div>Seleccione con que repositorios entrenar al modelo y predice la etiqueta de una issue en base a él.</div>
+		<form action="./Predecir/">
+			<button type="submit" title="Seleccione con que repositorios entrenar al modelo y predice la etiqueta de una issue en base a él">
+				Predecir</button>
+		</form>
+	</div>
+{% endblock %}

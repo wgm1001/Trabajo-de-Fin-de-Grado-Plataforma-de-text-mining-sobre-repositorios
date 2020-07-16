@@ -1,0 +1,16 @@
+{% macro show_form(campo, mensaje) %}
+  <div>
+	<td> {{campo.label}}
+	<p> {{mensaje}}
+	</p>
+	<dd> {{campo(**kwargs)|safe}}
+	{% if campo.errors %}
+		<ul>
+		{% for error in campo.errors %}
+			<li> {{error}} </li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+  </div>
+  <br></br>
+{% endmacro %}
