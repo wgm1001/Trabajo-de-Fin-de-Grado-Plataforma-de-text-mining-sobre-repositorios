@@ -49,7 +49,7 @@ class Almacen:
         try:
             cursor = con.cursor(buffered=True,dictionary=True)
             if idRepositorio is None:
-                sql_select_query = ' SELECT * FROM repositorios'
+                sql_select_query = ' SELECT * FROM repositorios order by momento desc'
             else:
                 if (moment is None):
                     sql_select_query = ' SELECT * FROM repositorios where idProyecto='+str(idRepositorio)+' and momento=(select max(momento) from repositorios where idProyecto='+str(idRepositorio)+')'
@@ -71,7 +71,9 @@ class Almacen:
                 for l in cursorLabels:
                     # labels_d.append(Label(lid=l['idLabel'],name=l['nombre'],color=l['color'],text_color=l['color_texto'],description=l['descripcion']))
                     labels_d.append(Label(lid=l[2],name=l[3],color=l[4],text_color=l[5],description=l[6]))
-                projects.append(Repositorio(pid=p['idProyecto'],name=p['Nombre'],description=p['Descripcion'],issues=issues_d,labels=labels_d))
+                repo=Repositorio(pid=p['idProyecto'],name=p['Nombre'],description=p['Descripcion'],issues=issues_d,labels=labels_d)
+                if repo.pid not in [p.pid for p in projects ] :
+                    projects.append(repo)
             for p in projects:
                 p.makeJSONList()
         finally:

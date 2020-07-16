@@ -1,7 +1,9 @@
-{% macro show_form(campo, mensaje) %}
+{% macro show_form(campo, mensaje='') %}
   <div>
 	<td> {{campo.label}}
-	<p> {{mensaje}}
+	{% if mensaje!=''%}
+		<p> {{mensaje}}
+	{% endif %}
 	</p>
 	<dd> {{campo(**kwargs)|safe}}
 	{% if campo.errors %}

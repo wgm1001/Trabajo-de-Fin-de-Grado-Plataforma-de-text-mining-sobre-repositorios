@@ -7,7 +7,10 @@ para que el servidor no lo haga directamente
 """
 from Extractor import Extractor
 from Almacen import Almacen
+from Predictor import Predictor
 class ServidorLogica:
+    id_count=0
+    modelos=dict()
     @staticmethod
     def extraer_rep(argumentos):
         url=argumentos['url']
@@ -29,3 +32,26 @@ class ServidorLogica:
             if str(e)=='Permisos insuficientes':
                 return 401
             raise
+
+    @staticmethod
+    def crearModelo(id_ses,modelo):
+        temp=ServidorLogica.modelos
+        temp[id_ses]= Predictor(modelo=modelo)
+        ServidorLogica.modelos=temp
+    
+    @staticmethod
+    def entrenarModelo(id_ses,repositorios,stopW,idioma,comentarios,metodo,sinEtiqueta):
+        try:
+            ServidorLogica.modelos[id_ses].entrenar(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo,sinEtiqueta=sinEtiqueta)
+            return 200
+        except Exception as e:
+            if str(e)=='Argumentos incorrectos':
+                return 400
+    
+    @staticmethod
+    def predIssue(id_ses,issue_text):
+        return ServidorLogica.modelos[id_ses].predecir(issue_text)
+    
+    def getId():
+        ServidorLogica.id_count+=1
+        return ServidorLogica.id_count

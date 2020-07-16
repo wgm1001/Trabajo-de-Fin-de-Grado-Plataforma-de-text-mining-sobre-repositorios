@@ -20,18 +20,19 @@ class TranscriptorSingleClass:
         for r in repositorios:
             repositorio=Almacen.sacarRepositorios(idRepositorio=r)
             for i in repositorio.issues:
-                temp=i.title
-                if i.description is not None:
-                    temp+=' '+i.description
-                if comentarios:
-                    for c in i.notes:
-                        temp+=' '+c
+                if sinEtiqueta or len(i.labels)>0:
+                    temp=i.title
+                    if i.description is not None:
+                        temp+=' '+i.description
+                    if comentarios:
+                        for c in i.notes:
+                            temp+=' '+c
                     issues_text.append(temp)
-                if len(i.labels)>0:
-                    y.append(i.labels[0])
-                else:
-                    if sinEtiqueta:
-                        y.append('Sin etiqueta')
+                    if len(i.labels)>0:
+                        y.append(i.labels[0])
+                    else:
+                        if sinEtiqueta:
+                            y.append('Sin etiqueta')
         y=np.array(y)
         tipoBolsa=TranscriptorSingleClass.switchTipoBolsa[metodo]
         if stopW:
@@ -39,13 +40,16 @@ class TranscriptorSingleClass:
             self.bolsa = tipoBolsa(stop_words=stopWords)
         else:
             self.bolsa = tipoBolsa()
+            
         self.bolsa.fit(issues_text)
         x=self.bolsa.transform(issues_text).toarray()
         x=np.array(x)
         return [x,y]
+    
     def transcribir(self,y):
         ret=self.bolsa.transform(y).toarray()
         return np.array(ret)
+    
     def __checkArgs(self,metodo,idioma):
         if metodo not in TranscriptorSingleClass.switchTipoBolsa.keys():
             raise Exception('Argumentos incorrectos')

@@ -36,6 +36,8 @@ class Predictor:
         pred=self.clf.predecir(y)
         if self.modelo in Predictor.multiClass:
             pred=self.trans.recuperar(pred)
+        else:
+            pred=pred.tolist()
         return pred
     def __checkArgs(self,stopW,comentarios,repositorios,sinEtiqueta):
         if not isinstance(stopW,bool):

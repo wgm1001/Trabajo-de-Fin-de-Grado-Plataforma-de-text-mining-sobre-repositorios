@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% if pred is not none %}
+		<div> Las etiquetas predichas para la issue anterios son:</div>
+		<ul>
+		{% for label in pred %}
+			<li>
+				{{label}}
+			</li>
+		{% endfor %}
+		</ul>
+		<div> Si desea predecir de nuevo con este modelo rellena de nuevo los campos, en caso contrario vuelve al inicio, el modelo se perderá.
+	{% endif %}
+	<form method="POST">
+		{% from "Macro_forms.html" import show_form %}
+		{{show_form(formulario.titulo)}}
+		{{show_form(formulario.descripcion)}}
+		{% if com == 'True' %}
+			{{show_form(formulario.comentarios)}}
+		{% endif%}
+		{{show_form(formulario.estado)}}
+		<button type="submit" title="Definir Los valores de la issue a predecir">Entrenar</button>
+	</form>
+	<div>Una vez introducidos los datos y enviados puede tardar en función de los parametros seleccionados, por favor espere.</div>
+{% endblock %}

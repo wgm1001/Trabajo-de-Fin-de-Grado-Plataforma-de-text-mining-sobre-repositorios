@@ -23,18 +23,19 @@ class TranscriptorMultiClass:
         for r in repositorios:
             repositorio=Almacen.sacarRepositorios(idRepositorio=r)
             for i in repositorio.issues:
-                temp=i.title
-                if i.description is not None:
-                    temp+=' '+i.description
-                if comentarios:
-                    for c in i.notes:
-                        temp+=' '+c
-                issues_text.append(temp)
-                if len(i.labels)>0:
-                    labels.append(i.labels)
-                else:
-                    if sinEtiqueta:
-                        labels.append('Sin etiqueta') 
+                if sinEtiqueta or len(i.labels)>0:
+                    temp=i.title
+                    if i.description is not None:
+                        temp+=' '+i.description
+                    if comentarios:
+                        for c in i.notes:
+                            temp+=' '+c
+                    issues_text.append(temp)
+                    if len(i.labels)>0:
+                        labels.append(i.labels)
+                    else:
+                        if sinEtiqueta:
+                            labels.append('Sin etiqueta') 
         y=np.array(labels)
         for l in self.labels:
             if l not in self.labels:

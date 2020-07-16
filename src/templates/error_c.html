@@ -3,17 +3,14 @@
 	<p style="text-align: center;" method="POST">
 		Ha habido un error con los argumentos introducidos, este error ha sido: 
 	</p>
-	{% if error=='401' %}
+	{% if error_c=='401' %}
 		<p>401: Permisos insuficientes</p>
 	{% endif %}
-	{% if error=='404' %}
+	{% if error_c=='404' %}
 		<p>404: Proyecto no encontrado</p>
 	{% endif %}
-	<p>por favor, intentelos de nuevo.
-	</p>
-	<div style="text-align: center;">
-		<form action="/Extraer" >
-			<button type="submit" title="Vuelve a la página de extracción">Volver a Extraer</button>
-		</form>
-	</div>
+	{% if error_c=='400' %}
+		<p>400: Argumentos incorrectos</p
+	{% endif %}
+	<p>por favor, intentelos de nuevo.</p>
 {% endblock %}
