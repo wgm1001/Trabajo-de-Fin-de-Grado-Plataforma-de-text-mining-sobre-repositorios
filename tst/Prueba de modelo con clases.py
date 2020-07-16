@@ -21,8 +21,6 @@ def pruebaSVM():
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     pred=p.predecir(issue)
-    if pred==rep.issues[0].labels:
-        print('Ha predecido bien')
     print('Ha llegado sin fallos')
 
 def pruebaMultinomialNB():
@@ -39,8 +37,6 @@ def pruebaMultinomialNB():
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     pred=p.predecir(issue)
-    if pred==rep.issues[0].labels:
-        print('Ha predecido bien')
     print('Ha llegado sin fallos')
 
 def pruebaKNN():

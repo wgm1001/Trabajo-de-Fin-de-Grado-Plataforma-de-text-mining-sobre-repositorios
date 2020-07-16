@@ -19,6 +19,7 @@ def main():
     session['pred']=None
     if 'id' not in session.keys():
         session['id']=ServidorLogica.getId()
+    print(session['id'])
     return render_template('mainPage.html')
 
 @app.route('/Extraer/',methods=['GET','POST'])
@@ -45,10 +46,11 @@ def extraccionCorrecta():
 
 @app.route('/Predecir/',methods=['GET','POST'])
 def predecir():
-    formulario=FormularioPrediccion(request.form)
+    formulario=FormularioPrediccion(request.form) 
     if request.method =='POST':
         ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip())
         resp=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data)
+        session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data]
         if resp != 200:
             return redirect(url_for('error_c',error_c=resp))
         return redirect(url_for('predIssue',com=formulario.comentarios.data))
@@ -57,6 +59,7 @@ def predecir():
 @app.route('/Predecir/issue/<com>',methods=['GET','POST'])
 def predIssue(com):
     formulario=FormularioIssue(request.form)
+    session['pred']=None
     if request.method =='POST' and formulario.validate():
         issue_text=formulario.titulo.data+' '+formulario.descripcion.data+' '+formulario.estado.data
         if com == 'True':

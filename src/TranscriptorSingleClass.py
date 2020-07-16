@@ -29,7 +29,10 @@ class TranscriptorSingleClass:
                             temp+=' '+c
                     issues_text.append(temp)
                     if len(i.labels)>0:
-                        y.append(i.labels[0])
+                        for n in range(len(i.labels)):
+                            y.append(i.labels[n])
+                            if n>0:
+                                issues_text.append(temp)
                     else:
                         if sinEtiqueta:
                             y.append('Sin etiqueta')
