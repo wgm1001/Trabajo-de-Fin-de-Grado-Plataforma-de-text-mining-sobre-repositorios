@@ -21,7 +21,8 @@ id=project.id
 issues=project.issues.list()
 labels = project.labels.list(all=True)
 
-con =  mysql.connector.connect(host="localhost", user="Willow", passwd="Garcia", db="TFG")
+con =  mysql.connector.connect(host="localhost", user="Willow", passwd="Garcia", db="TFG",
+                              auth_plugin='mysql_native_password')
 try:
     cursor = con.cursor(prepared=True)
     sql_insert_query = """ INSERT INTO prueba

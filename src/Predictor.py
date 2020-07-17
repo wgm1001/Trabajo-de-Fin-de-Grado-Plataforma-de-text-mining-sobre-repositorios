@@ -22,6 +22,12 @@ class Predictor:
             self.clf=ModeloMultiClass(mod=modelo)
             
     def entrenar(self,repositorios,stopW=True,idioma='english',comentarios=True,metodo='CV',sinEtiqueta=True):
+        self.repositorios=repositorios
+        self.stopW=stopW
+        self.idioma=idioma
+        self.comentarios=comentarios
+        self.metodo=metodo
+        self.sinEtiqueta=sinEtiqueta
         self.__checkArgs(stopW=stopW,comentarios=comentarios,repositorios=repositorios,sinEtiqueta=sinEtiqueta)
         if self.modelo in Predictor.multiClass:
             self.trans=TranscriptorMultiClass()

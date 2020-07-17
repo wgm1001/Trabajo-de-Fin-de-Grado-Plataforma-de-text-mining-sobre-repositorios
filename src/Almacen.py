@@ -10,6 +10,8 @@ from datetime import datetime
 from src.Repositorio import Repositorio
 from src.Label import Label
 from src.Issue import Issue
+import json
+import pickle
 
 class Almacen:
     #parametros de la conexion
@@ -19,7 +21,7 @@ class Almacen:
     def guardar(repositorio):
         if not isinstance(repositorio,Repositorio):
             raise Exception('Tipo a guardar incorrecto')
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
+        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursorRepositorios = con.cursor(prepared=True)
             momento=datetime.now()
@@ -40,12 +42,36 @@ class Almacen:
             con.commit()
         finally:
             con.close()
-
+    
+    def guardaModelo(modelo):
+        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        try:
+            repositorios=modelo.repositorios
+            cursorModelo = con.cursor(prepared=True)
+            momento=datetime.now()
+            sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'                                      
+            ins = (json.dumps(repositorios),momento,pickle.dumps(modelo))
+            cursorModelo.execute(sql_insert_query, ins)
+            con.commit()
+        finally:
+            con.close()
+            
+    def sacarModelo(repositorios):
+        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        try:
+            cursorModelo = con.cursor(prepared=True)
+            sql_select_query = ' SELECT modelo FROM modelos where idProyectos=\''+json.dumps(repositorios)+'\' and momento=(select max(momento) from modelos where idProyectos=\''+json.dumps(repositorios)+'\')'
+            cursorModelo.execute(sql_select_query)
+            mod=cursorModelo.fetchone()[0]
+            return pickle.loads(mod)
+        finally:
+            con.close()
+    
     @staticmethod
     def sacarRepositorios(idRepositorio=None,moment=None):
         Almacen.__checkArgsSacar(idRepositorio=idRepositorio,moment=moment)
         projects=[]
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'])
+        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursor = con.cursor(buffered=True,dictionary=True)
             if idRepositorio is None:
@@ -65,13 +91,13 @@ class Almacen:
                 issues_d=[]
                 for i in cursorIssues:
                     # issues_d.append(Issue(iid=i['idIssue'],title=i['titulo'],description=i['descripcion'],labels=i['etiquetas'],notes=i['comentarios'],state=i['status']))
-                    issues_d.append(Issue(iid=i[2],title=i[3],description=i[4],labels=i[5],notes=i[6],state=i[7]))
+                    issues_d.append(Issue(iid=i[2],title=Almacen.dcd(i[3]),description=Almacen.dcd(i[4]),labels=Almacen.dcd(i[5]),notes=Almacen.dcd(i[6]),state=Almacen.dcd(i[7])))
                 cursorLabels.execute(sql_select_labels_query, (p['idProyecto'],p['momento']))
                 labels_d=[]
                 for l in cursorLabels:
                     # labels_d.append(Label(lid=l['idLabel'],name=l['nombre'],color=l['color'],text_color=l['color_texto'],description=l['descripcion']))
-                    labels_d.append(Label(lid=l[2],name=l[3],color=l[4],text_color=l[5],description=l[6]))
-                repo=Repositorio(pid=p['idProyecto'],name=p['Nombre'],description=p['Descripcion'],issues=issues_d,labels=labels_d)
+                    labels_d.append(Label(lid=l[2],name=Almacen.dcd(l[3]),color=Almacen.dcd(l[4]),text_color=Almacen.dcd(l[5]),description=Almacen.dcd(l[6])))
+                repo=Repositorio(pid=Almacen.dcd(p['idProyecto']),name=Almacen.dcd(p['Nombre']),description=Almacen.dcd(p['Descripcion']),issues=issues_d,labels=labels_d)
                 if repo.pid not in [p.pid for p in projects ] :
                     projects.append(repo)
             for p in projects:
@@ -93,3 +119,9 @@ class Almacen:
             raise Exception('Tipos a extraer incorrectos')
         if moment is not None and not isinstance(moment,int):
             raise Exception('Tipos a extraer incorrectos')
+    
+    @staticmethod
+    def dcd(arg):
+        if isinstance(arg,bytearray):
+            return arg.decode("utf-8")
+        return arg

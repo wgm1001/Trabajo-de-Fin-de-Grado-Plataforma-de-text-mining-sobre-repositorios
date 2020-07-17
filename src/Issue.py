@@ -18,8 +18,8 @@ class Issue:
     
     def makeJSONList(self):
         if isinstance(self.labels, str):
-            self.notes=json.loads(self.notes)
-            self.labels=json.loads(self.labels)
+            self.notes=list(json.loads(self.notes))
+            self.labels=list(json.loads(self.labels))
         
     def makeListJSON(self):
         if not isinstance(self.labels, str):

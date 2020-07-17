@@ -773,7 +773,228 @@ Recall score: 0.8928177
  Recall mejor con 0.9171271 es  <class 'sklearn.ensemble._forest.RandomForestClassifier'>
  Precision  mejor con 0.9171271 es  <class 'sklearn.ensemble._forest.RandomForestClassifier'>
 '''
-
+'''
+=================================================================
+ Repositorio:  8860457 Foundry VTT 5th Edition 
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.MultinomialNB'> 
+Entrenamiento 0.03661s  Prediccion 0.00130s
+Accuracy score: 0.7007407
+F1 score: 0.7007407
+Precision media score: 0.7007407
+Recall score: 0.7007407
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._perceptron.Perceptron'> 
+Entrenamiento 0.19160s  Prediccion 0.00140s
+Accuracy score: 0.6037710
+F1 score: 0.6037710
+Precision media score: 0.6037710
+Recall score: 0.6037710
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.svm._classes.SVC'> 
+Entrenamiento 1.64618s  Prediccion 0.09704s
+Accuracy score: 0.7446465
+F1 score: 0.7446465
+Precision media score: 0.7446465
+Recall score: 0.7446465
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._classification.KNeighborsClassifier'> 
+Entrenamiento 0.30291s  Prediccion 0.15844s
+Accuracy score: 0.7354882
+F1 score: 0.7354882
+Precision media score: 0.7354882
+Recall score: 0.7354882
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier'> 
+Entrenamiento 0.46482s  Prediccion 0.00190s
+Accuracy score: 0.6272054
+F1 score: 0.6272054
+Precision media score: 0.6272054
+Recall score: 0.6272054
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.ensemble._forest.RandomForestClassifier'> 
+Entrenamiento 0.63878s  Prediccion 0.00950s
+Accuracy score: 0.7428283
+F1 score: 0.7428283
+Precision media score: 0.7428283
+Recall score: 0.7428283
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._nearest_centroid.NearestCentroid'> 
+Entrenamiento 0.01330s  Prediccion 0.00190s
+Accuracy score: 0.4461616
+F1 score: 0.4461616
+Precision media score: 0.4461616
+Recall score: 0.4461616
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.BernoulliNB'> 
+Entrenamiento 0.04981s  Prediccion 0.00390s
+Accuracy score: 0.6803367
+F1 score: 0.6803367
+Precision media score: 0.6803367
+Recall score: 0.6803367
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.ComplementNB'> 
+Entrenamiento 0.03643s  Prediccion 0.00130s
+Accuracy score: 0.6143434
+F1 score: 0.6143434
+Precision media score: 0.6143434
+Recall score: 0.6143434
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Accuracy mejor con 0.7446465 es  <class 'sklearn.svm._classes.SVC'>
+ F1 mejor con 0.7446465 es  <class 'sklearn.svm._classes.SVC'>
+ Recall mejor con 0.7446465 es  <class 'sklearn.svm._classes.SVC'>
+ Precision  mejor con 0.7446465 es  <class 'sklearn.svm._classes.SVC'>
+=================================================================
+ Repositorio:  3472737 inkscape 
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.MultinomialNB'> 
+Entrenamiento 40.05670s  Prediccion 0.10893s
+Accuracy score: 0.3101888
+F1 score: 0.3101888
+Precision media score: 0.3101888
+Recall score: 0.3101888
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._perceptron.Perceptron'> 
+Entrenamiento 69.17763s  Prediccion 0.10838s
+Accuracy score: 0.1048221
+F1 score: 0.1048221
+Precision media score: 0.1048221
+Recall score: 0.1048221
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.svm._classes.SVC'> 
+Entrenamiento 1006.06332s  Prediccion 40.50082s
+Accuracy score: 0.3504615
+F1 score: 0.3504615
+Precision media score: 0.3504615
+Recall score: 0.3504615
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._classification.KNeighborsClassifier'> 
+Entrenamiento 26.11209s  Prediccion 54.13130s
+Accuracy score: 0.3004729
+F1 score: 0.3004729
+Precision media score: 0.3004729
+Recall score: 0.3004729
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier'> 
+Entrenamiento 161.57839s  Prediccion 0.10597s
+Accuracy score: 0.2091013
+F1 score: 0.2091013
+Precision media score: 0.2091013
+Recall score: 0.2091013
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.ensemble._forest.RandomForestClassifier'> 
+Entrenamiento 139.72166s  Prediccion 0.11130s
+Accuracy score: 0.3490338
+F1 score: 0.3490338
+Precision media score: 0.3490338
+Recall score: 0.3490338
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._nearest_centroid.NearestCentroid'> 
+Entrenamiento 0.75956s  Prediccion 0.14853s
+Accuracy score: 0.0179959
+F1 score: 0.0179959
+Precision media score: 0.0179959
+Recall score: 0.0179959
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.BernoulliNB'> 
+Entrenamiento 43.60043s  Prediccion 0.24186s
+Accuracy score: 0.3293276
+F1 score: 0.3293276
+Precision media score: 0.3293276
+Recall score: 0.3293276
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.ComplementNB'> 
+Entrenamiento 40.25705s  Prediccion 0.09612s
+Accuracy score: 0.1882279
+F1 score: 0.1882279
+Precision media score: 0.1882279
+Recall score: 0.1882279
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Accuracy mejor con 0.3504615 es  <class 'sklearn.svm._classes.SVC'>
+ F1 mejor con 0.3504615 es  <class 'sklearn.svm._classes.SVC'>
+ Recall mejor con 0.3504615 es  <class 'sklearn.svm._classes.SVC'>
+ Precision  mejor con 0.3504615 es  <class 'sklearn.svm._classes.SVC'>
+=================================================================
+ Repositorio:  6094330 Commento 
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.MultinomialNB'> 
+Entrenamiento 0.10838s  Prediccion 0.00190s
+Accuracy score: 0.3058584
+F1 score: 0.3058584
+Precision media score: 0.3058584
+Recall score: 0.3058584
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._perceptron.Perceptron'> 
+Entrenamiento 0.57069s  Prediccion 0.00200s
+Accuracy score: 0.1743734
+F1 score: 0.1743734
+Precision media score: 0.1743734
+Recall score: 0.1743734
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.svm._classes.SVC'> 
+Entrenamiento 3.23252s  Prediccion 0.13471s
+Accuracy score: 0.3866541
+F1 score: 0.3866541
+Precision media score: 0.3866541
+Recall score: 0.3866541
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._classification.KNeighborsClassifier'> 
+Entrenamiento 0.36344s  Prediccion 0.19225s
+Accuracy score: 0.3515038
+F1 score: 0.3515038
+Precision media score: 0.3515038
+Recall score: 0.3515038
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.linear_model._passive_aggressive.PassiveAggressiveClassifier'> 
+Entrenamiento 1.20545s  Prediccion 0.00199s
+Accuracy score: 0.2320489
+F1 score: 0.2320489
+Precision media score: 0.2320489
+Recall score: 0.2320489
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.ensemble._forest.RandomForestClassifier'> 
+Entrenamiento 1.83038s  Prediccion 0.00967s
+Accuracy score: 0.3761278
+F1 score: 0.3761278
+Precision media score: 0.3761278
+Recall score: 0.3761278
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.neighbors._nearest_centroid.NearestCentroid'> 
+Entrenamiento 0.01480s  Prediccion 0.00260s
+Accuracy score: 0.0931704
+F1 score: 0.0931704
+Precision media score: 0.0931704
+Recall score: 0.0931704
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.BernoulliNB'> 
+Entrenamiento 0.12273s  Prediccion 0.00450s
+Accuracy score: 0.3444236
+F1 score: 0.3444236
+Precision media score: 0.3444236
+Recall score: 0.3444236
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.ComplementNB'> 
+Entrenamiento 0.10698s  Prediccion 0.00150s
+Accuracy score: 0.1864662
+F1 score: 0.1864662
+Precision media score: 0.1864662
+Recall score: 0.1864662
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Accuracy mejor con 0.3866541 es  <class 'sklearn.svm._classes.SVC'>
+ F1 mejor con 0.3866541 es  <class 'sklearn.svm._classes.SVC'>
+ Recall mejor con 0.3866541 es  <class 'sklearn.svm._classes.SVC'>
+ Precision  mejor con 0.3866541 es  <class 'sklearn.svm._classes.SVC'>
+=================================================================
+ Repositorio:  252461 iterm2 
+-----------------------------------------------------------------
+ clasificador:  <class 'sklearn.naive_bayes.MultinomialNB'> 
+Entrenamiento 477.71886s  Prediccion 11.22950s
+Accuracy score: 0.2394352
+F1 score: 0.2394352
+Precision media score: 0.2394352
+Recall score: 0.2394352
+-----------------------------------------------------------------
+'''
 
 
 '''

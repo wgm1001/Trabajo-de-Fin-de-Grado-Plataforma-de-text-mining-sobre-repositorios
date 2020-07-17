@@ -6,13 +6,11 @@ Esta prueba se encarga de comprobar que las clases funcionan correctamente.
 """
 from src.Predictor import Predictor
 from src.Almacen import Almacen
-import numpy as np
 def pruebaSVM():
     '''
     Probaremos que funcione la predicción con este modelo
     
     >>> pruebaSVM()
-    Ha predecido bien
     Ha llegado sin fallos
     
     '''
@@ -20,7 +18,7 @@ def pruebaSVM():
     p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
-    pred=p.predecir(issue)
+    p.predecir(issue)
     print('Ha llegado sin fallos')
 
 def pruebaMultinomialNB():
@@ -28,7 +26,6 @@ def pruebaMultinomialNB():
     Probaremos que funcione la predicción con este modelo
     
     >>> pruebaMultinomialNB()
-    Ha predecido bien
     Ha llegado sin fallos
     
     '''
@@ -36,7 +33,7 @@ def pruebaMultinomialNB():
     p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
-    pred=p.predecir(issue)
+    p.predecir(issue)
     print('Ha llegado sin fallos')
 
 def pruebaKNN():
@@ -99,6 +96,22 @@ def pruebaModeloInvalido():
             print('Error detectado')
         else:
             raise
+def pruebaAlmacenamientoModelo():
+    '''
+    Probaremos a guardar un modelo entrenado en la base de datos.
+    
+    >>> pruebaAlmacenamientoModelo()
+    Llega sin errores
+    
+    '''
+    p=Predictor(modelo='RandomForest')
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    Almacen.guardaModelo(p)
+    p=Almacen.sacarModelo([19766159])
+    rep=Almacen.sacarRepositorios(19766159)
+    issue=[rep.issues[0].title]
+    print('Llega sin errores')
+            
 def pruebaBadArgs():
     '''
     En esta prueba introduciermos malos parametros en el entrenamiento.

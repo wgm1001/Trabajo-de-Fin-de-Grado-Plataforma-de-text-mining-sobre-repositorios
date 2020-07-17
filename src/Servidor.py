@@ -67,6 +67,18 @@ def predIssue(com):
         session['pred']=ServidorLogica.predIssue(session['id'],issue_text=issue_text)
     pred=session['pred']
     return render_template('issues.html',formulario=formulario, pred=pred,com=com)
+@app.route('/Predecir/cargar')
+
+def recuperarModelo():
+    formulario=FormularioModelos(request.form) 
+    if request.method =='POST':
+        ServidorLogica.sacarModelo(formulario.modelo.data)
+        resp=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data)
+        session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data]
+        if resp != 200:
+            return redirect(url_for('error_c',error_c=resp))
+        return redirect(url_for('predIssue',com=formulario.comentarios.data))
+    return render_template('recuperarModelo.html',formulario=formulario)
 
 @app.errorhandler(404)
 def enlaceRoto(e):
