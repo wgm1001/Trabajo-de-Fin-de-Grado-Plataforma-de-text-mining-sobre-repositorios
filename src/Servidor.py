@@ -19,7 +19,6 @@ def main():
     session['pred']=None
     if 'id' not in session.keys():
         session['id']=ServidorLogica.getId()
-    print(session['id'])
     return render_template('mainPage.html')
 
 @app.route('/Extraer/',methods=['GET','POST'])

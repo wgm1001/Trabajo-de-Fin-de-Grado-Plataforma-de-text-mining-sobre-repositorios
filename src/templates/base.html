@@ -7,7 +7,6 @@
   </head>
   <body>
     <h1>Trabajo de Fin de Grado: Plataforma de text mining sobre repositorios</h1>
-    <p>Realizado por: Willow Maui García Moreno</p>
 	<br></br>
 	{% with messages = get_flashed_messages() %}
 		{% if messages %}
@@ -20,11 +19,13 @@
 	{% endwith %}
 	{% block content %}
 	{% endblock %}
-	<br></br>
-    <div >
+    <br></br>
+	<div >
 		<form action="/" >
 			<button type="submit" title="Vuelve a la página inicial">Volver al inicio</button>
 		</form>
+		<p>Realizado por: Willow Maui García Moreno</p>
+		<P>Tutores: Jesús María Alonso Abad y Carlos López Nozal</p>
 	</div>
   </body>
 </html>

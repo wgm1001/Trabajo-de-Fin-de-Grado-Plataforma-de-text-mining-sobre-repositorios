@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content%}
-	<form method="POST">
-		{% from "Macro_forms.html" import show_form %}
-		{{show_form(formulario.modelo)}}
-		{{show_form(formulario.repositorios,'Para seleccionar más de uno mantenga la tecla control mientras los selecciona, Es necesario seleccionar al menos uno.')}}
-		{{show_form(formulario.stopWords)}}
-		{{show_form(formulario.idioma)}}
-		{{show_form(formulario.comentarios)}}
-		{{show_form(formulario.metodo)}}
-		{{show_form(formulario.sinEtiqueta,'En caso de tenerlas en cuenta habrá posibilidades de que te prediga que no le corresponde una etiqueta.')}}
-		<button type="submit" title="Definir los diferentes parametros para entrenar al modelo">Entrenar</button>
-	</form>
-	<div>Una vez introducidos los datos y enviados puede tardar en función de los parametros seleccionados, por favor espere.</div>
+	<div>
+		<form method="POST">
+			{% from "Macro_forms.html" import show_form %}
+			{{show_form(formulario.modelo)}}
+			{{show_form(formulario.repositorios,'Para seleccionar más de uno mantenga la tecla control mientras los selecciona, Es necesario seleccionar al menos uno.')}}
+			{{show_form(formulario.stopWords)}}
+			{{show_form(formulario.idioma)}}
+			{{show_form(formulario.comentarios)}}
+			{{show_form(formulario.metodo)}}
+			{{show_form(formulario.sinEtiqueta,'En caso de tenerlas en cuenta habrá posibilidades de que te prediga que no le corresponde una etiqueta.')}}
+			<button type="submit" title="Definir los diferentes parametros para entrenar al modelo">Entrenar</button>
+		</form>
+		<div>Una vez introducidos los datos y enviados puede tardar en función de los parametros seleccionados, por favor espere.</div>
+	</div>
 {% endblock %}
 

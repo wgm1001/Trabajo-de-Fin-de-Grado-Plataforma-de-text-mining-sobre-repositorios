@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content%}
-	<p style="text-align: center;" method="POST">
+	<div style="text-align: center;" method="POST">
 		Ha habido un error con los argumentos introducidos, este error ha sido: 
-	</p>
+	</div>
 	{% if error_c=='401' %}
-		<p>401: Permisos insuficientes</p>
+		<er>401: Permisos insuficientes</er>
 	{% endif %}
 	{% if error_c=='404' %}
-		<p>404: Proyecto no encontrado</p>
+		<er>404: Proyecto no encontrado</er>
 	{% endif %}
 	{% if error_c=='400' %}
-		<p>400: Argumentos incorrectos</p
+		<er>400: Argumentos incorrectos</er>
 	{% endif %}
 	<p>por favor, intentelos de nuevo.</p>
 {% endblock %}

@@ -1,15 +1,15 @@
 {% macro show_form(campo, mensaje='') %}
   <div>
-	<td> {{campo.label}}
+	<td class="formfield"> {{campo.label}}
 	{% if mensaje!=''%}
-		<p> {{mensaje}}
+		<p> {{mensaje}} </p>
 	{% endif %}
-	</p>
-	<dd> {{campo(**kwargs)|safe}}
+	
+	<dd class="formfield"> {{campo(**kwargs)|safe}}
 	{% if campo.errors %}
-		<ul>
+		<ul class="formfield">
 		{% for error in campo.errors %}
-			<li> {{error}} </li>
+			<li class="formfield"> {{error}} </li>
 		{% endfor %}
 		</ul>
 	{% endif %}
