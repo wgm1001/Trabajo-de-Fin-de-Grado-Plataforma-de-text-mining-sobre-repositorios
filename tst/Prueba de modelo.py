@@ -118,8 +118,8 @@ idioma='spanish'
 stop=True
 stopWords = set(stopwords.words(idioma))
 ran_sta=np.random.RandomState(0)
-#for idRepositorio in [8860457, 3472737, 6094330, 252461]:
-for idRepositorio in [252461]:
+for idRepositorio in [8860457, 3472737, 6094330, 252461]:
+#for idRepositorio in [252461]:
     repositorio=Almacen.sacarRepositorios(idRepositorio=idRepositorio)
     print('='*65)
     print('\033[92m','Repositorio: ',repositorio.pid, repositorio.name,'\033[0m')
@@ -140,8 +140,10 @@ for idRepositorio in [252461]:
         for c in i.notes:
             temp+=' '+c
         issues_text.append(temp)
-        if len(i.labels)>0:
-            y.append(i.labels[0])
+        for n in range(len(i.labels)):
+            y.append(i.labels[n])
+            if n>0:
+                issues_text.append(temp)
         else:
             y.append('Sin etiqueta')
     

@@ -11,6 +11,17 @@
 		</ul>
 		<div> Si desea predecir de nuevo con este modelo rellena de nuevo los campos, en caso contrario vuelve al inicio, el modelo se perderá.
 	{% endif %}
+	{% with modelo = session['modelo'] %}
+			<details open=false>
+				<summary>Detalles del modelo</summary>
+				<p> Repositorios utilizados: {{modelo[0]}} </p>
+				<p> Uso de Stop Words: {{modelo[1]}} </p>
+				<p> Idioma de Stop Words: {{modelo[2]}} </p>
+				<p> Uso de comentarios: {{modelo[3]}} </p>
+				<p> Metodo de conteo de palabras: {{modelo[4]}} </p>
+				<p> Uso de issues sin etiqueta: {{modelo[5]}} </p>
+			</details>
+		{% endwith %}
 	<form method="POST">
 		{% from "Macro_forms.html" import show_form %}
 		{{show_form(formulario.titulo)}}
@@ -19,7 +30,7 @@
 			{{show_form(formulario.comentarios)}}
 		{% endif%}
 		{{show_form(formulario.estado)}}
-		<button type="submit" title="Definir Los valores de la issue a predecir">Entrenar</button>
+		<button type="submit" title="Predecir para una issue concreta las etiquetas">Predecir</button>
 	</form>
 	<div>Una vez introducidos los datos y enviados puede tardar en función de los parametros seleccionados, por favor espere.</div>
 {% endblock %}
