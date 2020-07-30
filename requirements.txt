@@ -1,7 +1,7 @@
-MySQL-python
-scikit-learn
-nltk
-Flask
-WTForms
-Flask-WTF
-python-gitlab
+mysql-connector-python==8.0.19
+scikit-learn==0.23.1
+nltk==3.4.5
+Flask==1.1.1
+WTForms==2.3.1
+Flask-WTF==0.14.3
+python-gitlab=2.3.1
