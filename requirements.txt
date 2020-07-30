@@ -4,4 +4,4 @@ nltk==3.4.5
 Flask==1.1.1
 WTForms==2.3.1
 Flask-WTF==0.14.3
-python-gitlab=2.3.1
+python-gitlab==2.3.1
