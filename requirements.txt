@@ -1,0 +1,7 @@
+MySQL-python
+scikit-learn
+nltk
+Flask
+WTForms
+Flask-WTF
+python-gitlab
