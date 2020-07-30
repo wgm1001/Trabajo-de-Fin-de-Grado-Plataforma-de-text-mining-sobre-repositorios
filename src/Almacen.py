@@ -43,27 +43,39 @@ class Almacen:
         finally:
             con.close()
     
-    def guardaModelo(modelo):
+    def guardarModelo(modelo):
         con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             repositorios=modelo.repositorios
             cursorModelo = con.cursor(prepared=True)
             momento=datetime.now()
-            sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'                                      
+            sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'  
+            print(json.dumps(repositorios))                                    
             ins = (json.dumps(repositorios),momento,pickle.dumps(modelo))
             cursorModelo.execute(sql_insert_query, ins)
             con.commit()
         finally:
             con.close()
             
-    def sacarModelo(repositorios):
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+    def sacarModelo(repositorios=None):
+        con = mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursorModelo = con.cursor(prepared=True)
-            sql_select_query = ' SELECT modelo FROM modelos where idProyectos=\''+json.dumps(repositorios)+'\' and momento=(select max(momento) from modelos where idProyectos=\''+json.dumps(repositorios)+'\')'
+            if repositorios is not None:
+                print(repositorios,' ,' , json.dumps(repositorios), ' ' + json.dumps(repositorios),' ', str(repositorios))
+                sql_select_query = ' SELECT modelo FROM modelos where idProyectos=\''+str(repositorios)+'\' and momento=(select max(momento) from modelos where idProyectos=\''+str(repositorios)+'\')'
+            else:
+                sql_select_query = ' SELECT modelo FROM modelos order by momento desc'
             cursorModelo.execute(sql_select_query)
-            mod=cursorModelo.fetchone()[0]
-            return pickle.loads(mod)
+            modelos=[]
+            modelos_id=[]
+            for i in cursorModelo.fetchall():
+                m=pickle.loads(i[0])
+                if m.repositorios not in modelos_id:
+                    modelos.append(m)
+                    modelos_id.append(m.repositorios)
+            modelos=modelos[0] if repositorios is not None else modelos
+            return modelos
         finally:
             con.close()
     

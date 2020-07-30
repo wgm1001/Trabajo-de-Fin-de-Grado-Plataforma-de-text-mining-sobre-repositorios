@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content%}
+	<div>
+		<form method="POST">
+			{% from "Macro_forms.html" import show_form %}
+			{{show_form(formulario.modelos)}}
+			<button type="submit" title="Seleccionar un modelo ya entrenado">Seleccionar</button>
+		</form>
+		<div>Si prefieres entrenar un modelo pulse:</div>
+		<form action="/Predecir/" >
+			<button type="submit" title="Volver a pantalla de entrenar">Entrenar</button>
+		</form>
+	</div>
+{% endblock %}

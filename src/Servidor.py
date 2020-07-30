@@ -8,6 +8,7 @@ from flask import Flask, render_template, redirect, url_for,session
 from formularios.FormularioExtraccion import FormularioExtraccion
 from formularios.FormularioPrediccion import FormularioPrediccion
 from formularios.FormularioIssue import FormularioIssue
+from formularios.FormularioModelo import FormularioModelo
 from flask import request
 from ServidorLogica import ServidorLogica
 
@@ -67,17 +68,14 @@ def predIssue(com):
         session['pred']=ServidorLogica.predIssue(session['id'],issue_text=issue_text)
     pred=session['pred']
     return render_template('issues.html',formulario=formulario, pred=pred,com=com)
-@app.route('/Predecir/cargar')
 
+@app.route('/Predecir/cargar',methods=['GET','POST'])
 def recuperarModelo():
-    formulario=FormularioModelos(request.form) 
+    formulario=FormularioModelo(request.form) 
     if request.method =='POST':
-        ServidorLogica.sacarModelo(formulario.modelo.data)
-        resp=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data)
-        session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data]
-        if resp != 200:
-            return redirect(url_for('error_c',error_c=resp))
-        return redirect(url_for('predIssue',com=formulario.comentarios.data))
+        mod=ServidorLogica.sacarModelo(session['id'],formulario.modelos.data)
+        session['modelo']=[mod.repositorios,mod.stopW,mod.idioma,mod.comentarios,mod.metodo,mod.sinEtiqueta]
+        return redirect(url_for('predIssue',com=mod.comentarios))
     return render_template('recuperarModelo.html',formulario=formulario)
 
 @app.errorhandler(404)

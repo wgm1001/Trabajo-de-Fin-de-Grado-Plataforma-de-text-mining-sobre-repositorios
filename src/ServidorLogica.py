@@ -36,14 +36,14 @@ class ServidorLogica:
     @staticmethod
     def crearModelo(id_ses,modelo):
         temp=ServidorLogica.modelos
-        temp[id_ses]= Predictor(modelo=modelo)
+        temp[id_ses]=Predictor(modelo=modelo)
         ServidorLogica.modelos=temp
     
     @staticmethod
     def entrenarModelo(id_ses,repositorios,stopW,idioma,comentarios,metodo,sinEtiqueta):
         try:
             ServidorLogica.modelos[id_ses].entrenar(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo,sinEtiqueta=sinEtiqueta)
-            Almacen.guardaModelo(ServidorLogica.modelos[id_ses])
+            Almacen.guardarModelo(ServidorLogica.modelos[id_ses])
             return 200
         except Exception as e:
             if str(e)=='Argumentos incorrectos':
@@ -54,6 +54,7 @@ class ServidorLogica:
         temp=ServidorLogica.modelos
         temp[id_ses]= Almacen.sacarModelo(repositorios)
         ServidorLogica.modelos=temp
+        return temp[id_ses]
     
     @staticmethod
     def predIssue(id_ses,issue_text):

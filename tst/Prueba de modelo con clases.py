@@ -106,10 +106,9 @@ def pruebaAlmacenamientoModelo():
     '''
     p=Predictor(modelo='RandomForest')
     p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
-    Almacen.guardaModelo(p)
+    Almacen.guardarModelo(p)
     p=Almacen.sacarModelo([19766159])
-    rep=Almacen.sacarRepositorios(19766159)
-    issue=[rep.issues[0].title]
+    Almacen.sacarRepositorios(19766159)
     print('Llega sin errores')
             
 def pruebaBadArgs():
