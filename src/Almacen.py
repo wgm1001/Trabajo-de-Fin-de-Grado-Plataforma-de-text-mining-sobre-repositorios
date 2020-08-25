@@ -15,13 +15,13 @@ import pickle
 
 class Almacen:
     #parametros de la conexion
-    conexion={'host':'localhost','user':'Willow','passwd':'Garcia','db':'TFG'}
+    conexion={'host':'localhost','user':'Willow','passwd':'Garcia','db':'TFG','port':3310}
     #Con este metodo almacenaremos en la base de datos los proyectos recuperados
     @staticmethod
     def guardar(repositorio):
         if not isinstance(repositorio,Repositorio):
             raise Exception('Tipo a guardar incorrecto')
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        con =  mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursorRepositorios = con.cursor(prepared=True)
             momento=datetime.now()
@@ -44,7 +44,7 @@ class Almacen:
             con.close()
     
     def guardarModelo(modelo):
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        con =  mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             repositorios=modelo.repositorios
             cursorModelo = con.cursor(prepared=True)
@@ -58,7 +58,7 @@ class Almacen:
             con.close()
             
     def sacarModelo(repositorios=None):
-        con = mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        con =  mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursorModelo = con.cursor(prepared=True)
             if repositorios is not None:
@@ -83,7 +83,7 @@ class Almacen:
     def sacarRepositorios(idRepositorio=None,moment=None):
         Almacen.__checkArgsSacar(idRepositorio=idRepositorio,moment=moment)
         projects=[]
-        con =  mysql.connector.connect(host=Almacen.conexion['host'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        con =  mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
         try:
             cursor = con.cursor(buffered=True,dictionary=True)
             if idRepositorio is None:
