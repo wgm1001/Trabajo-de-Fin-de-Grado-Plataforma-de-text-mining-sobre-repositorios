@@ -1,11 +1,11 @@
-CREATE SCHEMA `tfg` ;
-CREATE TABLE `tfg`.`repositorios` (
+CREATE SCHEMA `TFG` ;
+CREATE TABLE `TFG`.`repositorios` (
   `idProyecto` INT NOT NULL,
   `Nombre` VARCHAR(45) NULL,
   `Descripcion` MEDIUMTEXT NULL,
   `momento` DATETIME NOT NULL,
   PRIMARY KEY (`idProyecto`, `momento`));
-  CREATE TABLE `tfg`.`issues` (
+  CREATE TABLE `TFG`.`issues` (
   `idProyecto` INT NOT NULL,
   `momento` DATETIME NOT NULL,
   `idIssue` INT NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `tfg`.`repositorios` (
   `Comentarios` JSON NULL,
   `Status` VARCHAR(10) NULL,
   PRIMARY KEY (`idProyecto`, `momento`, `idIssue`));
-  CREATE TABLE `tfg`.`labels` (
+  CREATE TABLE `TFG`.`labels` (
   `idProyecto` INT NOT NULL,
   `momento` DATETIME NOT NULL,
   `idLabel` INT NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE `tfg`.`repositorios` (
   `Color_texto` VARCHAR(45) NULL DEFAULT NULL,
   `Descripcion` MEDIUMTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`momento`, `idProyecto`, `idLabel`));
-  CREATE TABLE `tfg`.`modelos` (
+  CREATE TABLE `TFG`.`modelos` (
   `idProyectos` VARCHAR(700) NOT NULL,
   `momento` DATETIME NOT NULL,
   `modelo` BLOB NOT NULL,
