@@ -20,3 +20,7 @@ class FormularioPrediccion(Form):
     comentarios=BooleanField('Definir si se utilizan comentarios en la predicción')
     metodo=SelectField('Definir método de conteo de palabras',choices=[c for c in list(TranscriptorSingleClass.switchTipoBolsa.keys())],default='CV')
     sinEtiqueta=BooleanField('Definir si se desea tener en cuenta las issues sin etiquetas')
+    
+    def __init__(self, *args, **kwargs):
+        super(FormularioPrediccion, self).__init__(*args, **kwargs)
+        self.repositorios.choices = [(p.pid,p.name) for p in Almacen.sacarRepositorios()]

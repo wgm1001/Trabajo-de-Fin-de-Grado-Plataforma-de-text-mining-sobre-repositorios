@@ -48,6 +48,7 @@ class ServidorLogica:
         except Exception as e:
             if str(e)=='Argumentos incorrectos':
                 return 400
+            raise
             
     @staticmethod
     def sacarModelo(id_ses,repositorios):

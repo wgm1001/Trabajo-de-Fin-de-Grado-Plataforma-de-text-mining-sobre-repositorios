@@ -15,7 +15,7 @@ import pickle
 
 class Almacen:
     #parametros de la conexion
-    conexion={'host':'localhost','user':'Willow','passwd':'Garcia','db':'TFG','port':3310}
+    conexion={'host':'localhost','user':'Willow','passwd':'Garcia','db':'TFG','port':33060}
     #Con este metodo almacenaremos en la base de datos los proyectos recuperados
     @staticmethod
     def guardar(repositorio):
@@ -49,6 +49,7 @@ class Almacen:
             repositorios=modelo.repositorios
             cursorModelo = con.cursor(prepared=True)
             momento=datetime.now()
+            modelo.momento=momento
             sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'  
             print(json.dumps(repositorios))                                    
             ins = (json.dumps(repositorios),momento,pickle.dumps(modelo))

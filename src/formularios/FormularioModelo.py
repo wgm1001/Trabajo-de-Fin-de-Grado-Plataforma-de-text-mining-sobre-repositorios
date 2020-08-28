@@ -9,4 +9,7 @@ from wtforms import Form, SelectField,validators
 from Almacen import Almacen
 
 class FormularioModelo(Form):  
-    modelos=SelectField('Modelos almacenados',[validators.DataRequired(message='es necesario seleccionar alguno')],choices=[(n.repositorios,str(n.repositorios)+' '+str(n.stopW)+' '+str(n.idioma)+' '+str(n.comentarios)+' '+str(n.metodo)+' '+str(n.sinEtiqueta)) for n in Almacen.sacarModelo()],validate_choice=False)
+    modelos=SelectField('Modelos almacenados', validators=[validators.DataRequired(message='es necesario seleccionar alguno')],choices=[(n.repositorios,str(n.repositorios)+' '+str(n.stopW)+' '+str(n.idioma)+' '+str(n.comentarios)+' '+str(n.metodo)+' '+str(n.sinEtiqueta)) for n in Almacen.sacarModelo()],validate_choice=False)
+    def __init__(self, *args, **kwargs):
+            super(FormularioModelo, self).__init__(*args, **kwargs)
+            self.modelos.choices = [(n.repositorios,str(n.repositorios)+' '+str(n.stopW)+' '+str(n.idioma)+' '+str(n.comentarios)+' '+str(n.metodo)+' '+str(n.sinEtiqueta)) for n in Almacen.sacarModelo()]

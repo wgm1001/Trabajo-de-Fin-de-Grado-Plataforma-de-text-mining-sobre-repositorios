@@ -4,7 +4,7 @@ CREATE TABLE `tfg`.`repositorios` (
   `Nombre` VARCHAR(45) NULL,
   `Descripcion` MEDIUMTEXT NULL,
   `momento` DATETIME NOT NULL,
-  PRIMARY KEY (`idProyectos`, `momento`));
+  PRIMARY KEY (`idProyecto`, `momento`));
   CREATE TABLE `tfg`.`issues` (
   `idProyecto` INT NOT NULL,
   `momento` DATETIME NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `tfg`.`repositorios` (
   `Etiquetas` JSON NULL,
   `Comentarios` JSON NULL,
   `Status` VARCHAR(10) NULL,
-  PRIMARY KEY (`idProyecto`, `momento`, `idLabel`));
+  PRIMARY KEY (`idProyecto`, `momento`, `idIssue`));
   CREATE TABLE `tfg`.`labels` (
   `idProyecto` INT NOT NULL,
   `momento` DATETIME NOT NULL,
@@ -28,4 +28,4 @@ CREATE TABLE `tfg`.`repositorios` (
   `idProyectos` VARCHAR(700) NOT NULL,
   `momento` DATETIME NOT NULL,
   `modelo` BLOB NOT NULL,
-  PRIMARY KEY (`idProyecto`, `momento`));
+  PRIMARY KEY (`idProyectos`, `momento`));
