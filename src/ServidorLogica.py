@@ -8,9 +8,11 @@ para que el servidor no lo haga directamente
 from Extractor import Extractor
 from Almacen import Almacen
 from Predictor import Predictor
+import os
 class ServidorLogica:
     id_count=0
     modelos=dict()
+    ruta_error='..'+os.path.sep+'errores.txt'
     @staticmethod
     def extraer_rep(argumentos):
         url=argumentos['url']
@@ -27,6 +29,7 @@ class ServidorLogica:
             Almacen.guardar(p)
             return 200
         except Exception as e:
+            ServidorLogica.log(str(e))
             if str(e)=='Proyecto no encontrado':
                 return 404
             if str(e)=='Permisos insuficientes':
@@ -46,6 +49,7 @@ class ServidorLogica:
             Almacen.guardarModelo(ServidorLogica.modelos[id_ses])
             return 200
         except Exception as e:
+            ServidorLogica.log(str(e))
             if str(e)=='Argumentos incorrectos':
                 return 400
             raise
@@ -65,3 +69,9 @@ class ServidorLogica:
     def getId():
         ServidorLogica.id_count+=1
         return ServidorLogica.id_count
+    
+    @staticmethod
+    def log(txt):
+        log=open(ServidorLogica.ruta_error,"a")
+        log.write("Ha ocurrido un error:\n"+txt)
+        
