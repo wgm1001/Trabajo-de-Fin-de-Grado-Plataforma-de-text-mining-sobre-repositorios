@@ -3,7 +3,7 @@ html{
 	display: inline-block;
 }
 h1{
-	background-color:#faec55;
+	background-color:#ffffff;
 	display: inline-block;
 	border: 2px solid black;
 	border-left-width:thick;
@@ -12,7 +12,7 @@ h1{
 	border-radius: 20px;
 }
 body{
-	background-color:#fdb410;
+	background-color:#000000;
 	display: inline-block;
 	box-sizing:border-box;
 	border-left-width:thick;
@@ -20,18 +20,18 @@ body{
 	background-clip: content-box;
 }
 div{
-	background-color:#faee70;
+	background-color:#ffffff;
 	display: inline-block;
 	background-clip:inherit;
 }
 er{
-	background-color:#faee70;
+	background-color:#ffffff;
 	color:#c6051e;
 	display: inline-block;
 	background-clip:inherit
 }
 p{
-	background-color:#faee70;
+	background-color:#ffffff;
 	display: block;
 	background-clip:inherit
 }
