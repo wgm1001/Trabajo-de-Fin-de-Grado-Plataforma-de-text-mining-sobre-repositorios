@@ -27,5 +27,5 @@ CREATE TABLE `TFG`.`repositorios` (
   CREATE TABLE `TFG`.`modelos` (
   `idProyectos` VARCHAR(700) NOT NULL,
   `momento` DATETIME NOT NULL,
-  `modelo` BLOB NOT NULL,
+  `modelo` LONGBLOB NOT NULL,
   PRIMARY KEY (`idProyectos`, `momento`));
