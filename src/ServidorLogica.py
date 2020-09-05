@@ -9,6 +9,8 @@ from Extractor import Extractor
 from Almacen import Almacen
 from Predictor import Predictor
 import os
+from datetime import datetime
+
 class ServidorLogica:
     id_count=0
     modelos=dict()
@@ -73,5 +75,5 @@ class ServidorLogica:
     @staticmethod
     def log(txt):
         log=open(ServidorLogica.ruta_error,"a")
-        log.write("Ha ocurrido un error:\n"+txt)
+        log.write("Ha ocurrido un error ("+datetime.now()+"):\n"+txt)
         
