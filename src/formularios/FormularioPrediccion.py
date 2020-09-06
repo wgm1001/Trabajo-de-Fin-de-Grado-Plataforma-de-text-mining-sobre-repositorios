@@ -14,7 +14,7 @@ from TranscriptorSingleClass import TranscriptorSingleClass
 
 class FormularioPrediccion(Form):  
     modelo=SelectField('Algoritmo para el modelo',choices=[n for n in list(ModeloSingleClass.switchAlgoritmo.keys())+list(ModeloMultiClass.switchAlgoritmo.keys())],default='MultinomialNB')
-    repositorios=SelectMultipleField('Repositorios para entrenar',coerce=int,choices=[(p.pid,p.name) for p in Almacen.sacarRepositorios()])
+    repositorios=SelectMultipleField('Repositorios para entrenar',coerce=int,choices=[(0,'Error, no hay repositorios')])
     stopWords=BooleanField('Definir si se usan StopWords')
     idioma=SelectField('Definir idioma de las StopWords',[validators.data_required(message='Es necesario seleccionar algún repositorio')],choices=stopwords.fileids())
     comentarios=BooleanField('Definir si se utilizan comentarios en la predicción')
@@ -23,4 +23,8 @@ class FormularioPrediccion(Form):
     
     def __init__(self, *args, **kwargs):
         super(FormularioPrediccion, self).__init__(*args, **kwargs)
-        self.repositorios.choices = [(p.pid,p.name) for p in Almacen.sacarRepositorios()]
+        repos = [(p.pid,p.name) for p in Almacen.sacarRepositorios()]
+        if self.repositorios.choices is None:
+            self.repositorios.choices=[(0,'Error, Necesitas descargar antes un repositorio')]
+        else:
+            self.repositorios.choices = repos
