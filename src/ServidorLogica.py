@@ -14,13 +14,12 @@ from datetime import datetime
 class ServidorLogica:
     id_count=0
     modelos=dict()
-    ruta_error='..'+os.path.sep+'errores.txt'
-    @staticmethod
-    def extraer_rep(argumentos):
+    ruta_error='..'+os.path.sep+'errores.txt'  
+    def extraer_rep(argumentos,pipe):
         url=argumentos['url']
         url=url.split('/')
         if url[2]!='gitlab.com':
-            return 400
+            pipe.send(400)
         url=url[3]+'/'+url[4]
         try:
             if 'token' in argumentos.keys():
@@ -29,13 +28,13 @@ class ServidorLogica:
                 ext=Extractor(url)
             p=ext.extraer()
             Almacen.guardar(p)
-            return 200
+            pipe.send(200)
         except Exception as e:
             ServidorLogica.log(str(e))
             if str(e)=='Proyecto no encontrado':
-                return 404
+                pipe.send(404)
             if str(e)=='Permisos insuficientes':
-                return 401
+                pipe.send(401)
             raise
 
     @staticmethod
@@ -45,15 +44,15 @@ class ServidorLogica:
         ServidorLogica.modelos=temp
     
     @staticmethod
-    def entrenarModelo(id_ses,repositorios,stopW,idioma,comentarios,metodo,sinEtiqueta):
+    def entrenarModelo(id_ses,repositorios,stopW,idioma,comentarios,metodo,sinEtiqueta,pipe):
         try:
             ServidorLogica.modelos[id_ses].entrenar(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo,sinEtiqueta=sinEtiqueta)
             Almacen.guardarModelo(ServidorLogica.modelos[id_ses])
-            return 200
+            pipe.env(200)
         except Exception as e:
             ServidorLogica.log(str(e))
             if str(e)=='Argumentos incorrectos':
-                return 400
+                pipe.env(400)
             raise
             
     @staticmethod
