@@ -54,7 +54,7 @@ def predecir():
     if request.method =='POST':
         ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip())
         pipe_rec,pipe_env=Pipe(False)
-        extr= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe_env))
+        extr= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe=pipe_env))
         extr.start()
         resp=pipe_rec.recv()
         resp=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data)
