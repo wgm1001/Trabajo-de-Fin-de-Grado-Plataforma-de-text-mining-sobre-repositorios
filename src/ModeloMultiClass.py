@@ -7,6 +7,8 @@ Esta implementa la predicción a través del modelo Pasado por argumento
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.multiclass import OneVsRestClassifier
 from src.ModeloSingleClass import ModeloSingleClass
+import numpy as np
+from sklearn.preprocessing import LabelBinarizer
 
 class ModeloMultiClass:
     switchAlgoritmo={'OneVsRest':OneVsRestClassifier}
@@ -27,7 +29,7 @@ Esta implementa la predicción a través del modelo Pasado por argumento creando
 
 class ModeloMultiClassManual:
     def __init__(self,mod):
-        self.modelo =ModeloSingleClass.switchAlgoritmo[mod]
+        self.modelo=mod
         self.clasificadores=dict()
         
     def entrenar(self,X,y):
@@ -36,20 +38,19 @@ class ModeloMultiClassManual:
                 if etiqueta not in self.clasificadores.keys():
                     temp_X=[]
                     temp_Y=[]
-                    self.clasificadores[etiqueta]=self.modelo()
+                    self.clasificadores[etiqueta]=ModeloSingleClass.switchAlgoritmo[self.modelo]
                     for i in range(len(y)):
-                        if etiqueta in y[i]:
-                            temp_Y.append(True)
-                        else:
-                            temp_Y.append(False)
+                        temp_Y.append(etiqueta in y[i])
                         temp_X.append(X[i])
-                    self.clasificadores[etiqueta].fit(X,y)
+                    temp_X=np.array(temp_X)
+                    temp_Y=np.array(temp_Y)
+                    self.clasificadores[etiqueta].fit(temp_X,temp_Y)
 
     def predecir(self,X):
         pred=[]
         for etiqueta in self.clasificadores.keys():
             if self.clasificadores[etiqueta].predict(X):
                 pred.append(etiqueta)
-        if pred is None:
+        if not pred:
             pred.append('Sin etiqueta')
         return pred

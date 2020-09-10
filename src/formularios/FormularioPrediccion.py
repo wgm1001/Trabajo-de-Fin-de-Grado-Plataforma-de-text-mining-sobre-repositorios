@@ -15,6 +15,7 @@ from TranscriptorSingleClass import TranscriptorSingleClass
 class FormularioPrediccion(Form):  
     modelo=SelectField('Algoritmo para el modelo',choices=[n for n in list(ModeloSingleClass.switchAlgoritmo.keys())+list(ModeloMultiClass.switchAlgoritmo.keys())],default='MultinomialNB')
     repositorios=SelectMultipleField('Repositorios para entrenar',coerce=int,choices=[(0,'Error, no hay repositorios')])
+    multiManual=BooleanField('Definir si se desea que se genere un modelo por etiqueta')
     stopWords=BooleanField('Definir si se usan StopWords')
     idioma=SelectField('Definir idioma de las StopWords',[validators.data_required(message='Es necesario seleccionar algún repositorio')],choices=stopwords.fileids())
     comentarios=BooleanField('Definir si se utilizan comentarios en la predicción')

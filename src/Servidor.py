@@ -52,12 +52,11 @@ def extraccionCorrecta():
 def predecir():
     formulario=FormularioPrediccion(request.form) 
     if request.method =='POST':
-        ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip())
+        ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip(),MultiManual=formulario.multiManual.data)
         pipe_rec,pipe_env=Pipe(False)
-        extr= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe=pipe_env))
-        extr.start()
+        prede= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe=pipe_env))
+        prede.start()
         resp=pipe_rec.recv()
-        resp=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data)
         session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data]
         if resp != 200:
             return redirect(url_for('error_c',error_c=resp))

@@ -176,8 +176,8 @@ def pruebaModeloPorEtiqueta():
     Ha llegado sin fallos
     
         '''
-    p=Predictor(modelo='MultinomialNB',MultiManual=False)
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
+    p=Predictor(modelo='MultinomialNB',MultiManual=True)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=False)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     p.predecir(issue)

@@ -107,6 +107,7 @@ class TranscriptorMultiClassManual:
         self.bolsa.fit(issues_text)
         x=self.bolsa.transform(issues_text).toarray()
         x=np.array(x)
+        return [x,y]
     
     def transcribir(self,y):
         ret=self.bolsa.transform(y).toarray()

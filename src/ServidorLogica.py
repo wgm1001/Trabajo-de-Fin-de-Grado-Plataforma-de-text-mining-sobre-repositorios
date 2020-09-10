@@ -38,9 +38,9 @@ class ServidorLogica:
             raise
 
     @staticmethod
-    def crearModelo(id_ses,modelo):
+    def crearModelo(id_ses,modelo,MultiManual):
         temp=ServidorLogica.modelos
-        temp[id_ses]=Predictor(modelo=modelo)
+        temp[id_ses]=Predictor(modelo=modelo,MultiManual=MultiManual)
         ServidorLogica.modelos=temp
     
     @staticmethod
@@ -48,11 +48,11 @@ class ServidorLogica:
         try:
             ServidorLogica.modelos[id_ses].entrenar(repositorios=repositorios,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo,sinEtiqueta=sinEtiqueta)
             Almacen.guardarModelo(ServidorLogica.modelos[id_ses])
-            pipe.env(200)
+            pipe.send(200)
         except Exception as e:
             ServidorLogica.log(str(e))
             if str(e)=='Argumentos incorrectos':
-                pipe.env(400)
+                pipe.send(400)
             raise
             
     @staticmethod
@@ -74,5 +74,5 @@ class ServidorLogica:
     @staticmethod
     def log(txt):
         log=open(ServidorLogica.ruta_error,"a")
-        log.write("Ha ocurrido un error ("+datetime.now()+"):\n"+txt)
+        log.write("Ha ocurrido un error ("+str(datetime.now())+"):\n"+txt)
         
