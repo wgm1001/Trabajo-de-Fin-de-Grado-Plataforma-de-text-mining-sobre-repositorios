@@ -72,3 +72,42 @@ class TranscriptorMultiClass:
             raise Exception('Argumentos incorrectos')
         if idioma not in stopwords.fileids():
             raise Exception('Argumentos incorrectos')
+            
+class TranscriptorMultiClassManual:  
+    switchTipoBolsa={'CV':CountVectorizer,'TFIDF':TfidfVectorizer}
+    def __init__(self):
+        self.labels=[]
+        
+    def transcribir_entrenar(self,repositorios,sinEtiqueta,stopW='True',idioma='spanish',comentarios=True,metodo='CV'):
+        issues_text=[]
+        labels=[]
+        for r in repositorios:
+            repositorio=Almacen.sacarRepositorios(idRepositorio=r)
+            for i in repositorio.issues:
+                if sinEtiqueta or len(i.labels)>0:
+                    temp=i.title
+                    if i.description is not None:
+                        temp+=' '+i.description
+                    if comentarios:
+                        for c in i.notes:
+                            temp+=' '+c
+                    issues_text.append(temp)
+                    if len(i.labels)>0:
+                        labels.append(i.labels)
+                    else:
+                        if sinEtiqueta:
+                            labels.append('Sin etiqueta') 
+        y=labels
+        tipoBolsa=TranscriptorMultiClass.switchTipoBolsa[metodo]
+        if stopW:
+            stopWords = set(stopwords.words(idioma))
+            self.bolsa = tipoBolsa(stop_words=stopWords)
+        else:
+            self.bolsa = tipoBolsa()
+        self.bolsa.fit(issues_text)
+        x=self.bolsa.transform(issues_text).toarray()
+        x=np.array(x)
+    
+    def transcribir(self,y):
+        ret=self.bolsa.transform(y).toarray()
+        return np.array(ret)

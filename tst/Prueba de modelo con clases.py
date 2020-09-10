@@ -14,8 +14,8 @@ def pruebaSVM():
     Ha llegado sin fallos
     
     '''
-    p=Predictor(modelo='SVM')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    p=Predictor(modelo='SVM',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     p.predecir(issue)
@@ -29,8 +29,8 @@ def pruebaMultinomialNB():
     Ha llegado sin fallos
     
     '''
-    p=Predictor(modelo='MultinomialNB')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,)
+    p=Predictor(modelo='MultinomialNB',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     p.predecir(issue)
@@ -44,8 +44,8 @@ def pruebaKNN():
     Ha llegado sin fallos
     
     '''
-    p=Predictor(modelo='KNN')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    p=Predictor(modelo='KNN',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     p.predecir(issue)
@@ -59,8 +59,8 @@ def pruebaRandomForest():
     Ha llegado sin fallos
     
     '''
-    p=Predictor(modelo='RandomForest')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    p=Predictor(modelo='RandomForest',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[0].title]
     p.predecir(issue)
@@ -74,8 +74,8 @@ def pruebaOneVsRest():
     Ha llegado sin fallos
     
     '''
-    p=Predictor(modelo='OneVsRest')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    p=Predictor(modelo='OneVsRest',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     rep=Almacen.sacarRepositorios(19766159)
     issue=[rep.issues[5].title]
     p.predecir(issue)
@@ -90,7 +90,7 @@ def pruebaModeloInvalido():
     
         '''
     try:
-        Predictor(modelo='Inválido')
+        Predictor(modelo='Inválido',MultiManual=False)
     except Exception as e:
         if str(e)=='Modelo desconocido':
             print('Error detectado')
@@ -104,8 +104,8 @@ def pruebaAlmacenamientoModelo():
     Llega sin errores
     
     '''
-    p=Predictor(modelo='RandomForest')
-    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True)
+    p=Predictor(modelo='RandomForest',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     Almacen.guardarModelo(p)
     p=Almacen.sacarModelo([19766159])
     Almacen.sacarRepositorios(19766159)
@@ -123,37 +123,37 @@ def pruebaBadArgs():
     Quinto error detectado
     Sexto error detectado
     '''  
-    p=Predictor(modelo='RandomForest')
+    p=Predictor(modelo='RandomForest',MultiManual=False)
     try:
-        p.entrenar(repositorios=[19766159],stopW='inválido',idioma='english',comentarios=True)
+        p.entrenar(repositorios=[19766159],stopW='inválido',idioma='english',comentarios=True,sinEtiqueta=True)
     except Exception as e:
         if str(e)=='Argumentos incorrectos':
             print('Primer error detectado')
         else:
             raise
     try:
-        p.entrenar(repositorios=[19766159],stopW=True,idioma='Inválido',comentarios=True)
+        p.entrenar(repositorios=[19766159],stopW=True,idioma='Inválido',comentarios=True,sinEtiqueta=True)
     except Exception as e:
         if str(e)=='Argumentos incorrectos':
             print('Segundo error detectado')
         else:
             raise
     try:
-        p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios='invalido')
+        p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios='invalido',sinEtiqueta=True)
     except Exception as e:
         if str(e)=='Argumentos incorrectos':
             print('Tercer error detectado')
         else:
             raise
     try:
-        p.entrenar(repositorios=[],stopW=True,idioma='english',comentarios=True)
+        p.entrenar(repositorios=[],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
     except Exception as e:
         if str(e)=='Argumentos incorrectos':
             print('Cuarto error detectado')
         else:
             raise
     try:
-        p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,metodo='invalido')
+        p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,metodo='invalido',sinEtiqueta=True)
     except Exception as e:
         if str(e)=='Argumentos incorrectos':
             print('Quinto error detectado')
@@ -167,6 +167,23 @@ def pruebaBadArgs():
         else:
             raise
             
+            
+def pruebaModeloPorEtiqueta():
+    '''
+    Probaremos que funcione la predicción con este modelo
+    
+    >>> pruebaModeloPorEtiqueta()
+    Ha llegado sin fallos
+    
+        '''
+    p=Predictor(modelo='MultinomialNB',MultiManual=False)
+    p.entrenar(repositorios=[19766159],stopW=True,idioma='english',comentarios=True,sinEtiqueta=True)
+    rep=Almacen.sacarRepositorios(19766159)
+    issue=[rep.issues[0].title]
+    p.predecir(issue)
+    print('Ha llegado sin fallos')
+      
+    
 if __name__ == "__main__":
     import doctest
     doctest.testmod()

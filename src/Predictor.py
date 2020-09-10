@@ -6,20 +6,24 @@ Clase encraga de realizar el proceso de entrenamiento y predicción
 """
 from src.ModeloSingleClass import ModeloSingleClass
 from src.ModeloMultiClass import ModeloMultiClass
-from src.TranscriptorMultiClass import TranscriptorMultiClass
+from src.ModeloMultiClass import ModeloMultiClassManual
+from src.TranscriptorMultiClass import TranscriptorMultiClass, TranscriptorMultiClassManual
 from src.TranscriptorSingleClass import TranscriptorSingleClass
 
 class Predictor:
     singleClass=ModeloSingleClass.switchAlgoritmo.keys()
     multiClass=ModeloMultiClass.switchAlgoritmo.keys()
-    def __init__(self,modelo='MultinomialNB'):
+    def __init__(self,modelo='MultinomialNB',MultiManual=False):
         self.modelo=modelo
+        self.MultiManual=MultiManual
         if modelo not in Predictor.singleClass and modelo not in Predictor.multiClass:
             raise Exception('Modelo desconocido')
         if modelo in Predictor.singleClass:
             self.clf=ModeloSingleClass(mod=modelo)
         if modelo in Predictor.multiClass:
             self.clf=ModeloMultiClass(mod=modelo)
+        if modelo in Predictor.singleClass and MultiManual:
+            self.clf=ModeloMultiClassManual(mod=modelo)
             
     def entrenar(self,repositorios,stopW=True,idioma='english',comentarios=True,metodo='CV',sinEtiqueta=True):
         self.repositorios=repositorios
@@ -31,8 +35,10 @@ class Predictor:
         self.__checkArgs(stopW=stopW,comentarios=comentarios,repositorios=repositorios,sinEtiqueta=sinEtiqueta)
         if self.modelo in Predictor.multiClass:
             self.trans=TranscriptorMultiClass()
-        if self.modelo in Predictor.singleClass:
+        if self.modelo in Predictor.singleClass and not self.MultiManual:
             self.trans=TranscriptorSingleClass()
+        if self.modelo in Predictor.singleClass and self.MultiManual:
+            self.trans=TranscriptorMultiClassManual()
         transcripcion=self.trans.transcribir_entrenar(repositorios=repositorios,sinEtiqueta=sinEtiqueta,stopW=stopW,idioma=idioma,comentarios=comentarios,metodo=metodo)
         X=transcripcion[0]
         y=transcripcion[1]

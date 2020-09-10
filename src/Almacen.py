@@ -54,8 +54,7 @@ class Almacen:
             cursorModelo = con.cursor(prepared=True)
             momento=datetime.now()
             modelo.momento=momento
-            sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'  
-            print(json.dumps(repositorios))                                    
+            sql_insert_query = ' INSERT INTO modelos (idProyectos, momento, modelo) VALUES (%s,%s,%s)'                                     
             ins = (json.dumps(repositorios),momento,pickle.dumps(modelo))
             cursorModelo.execute(sql_insert_query, ins)
             con.commit()
@@ -67,7 +66,6 @@ class Almacen:
         try:
             cursorModelo = con.cursor(prepared=True)
             if repositorios is not None:
-                print(repositorios,' ,' , json.dumps(repositorios), ' ' + json.dumps(repositorios),' ', str(repositorios))
                 sql_select_query = ' SELECT modelo FROM modelos where idProyectos=\''+str(repositorios)+'\' and momento=(select max(momento) from modelos where idProyectos=\''+str(repositorios)+'\')'
             else:
                 sql_select_query = ' SELECT modelo FROM modelos order by momento desc'

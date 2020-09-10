@@ -8,6 +8,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn import svm
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
+
 class ModeloSingleClass:
     switchAlgoritmo={'MultinomialNB':MultinomialNB(),'SVM':svm.SVC(),'KNN':KNeighborsClassifier(),'RandomForest':RandomForestClassifier()}
     def __init__(self,mod):
