@@ -25,13 +25,13 @@ def pruebaEficiencia():
         algoritmos_single=ModeloSingleClass.switchAlgoritmo.keys()
         algoritmos_multi=ModeloMultiClass.switchAlgoritmo.keys()
 #        algoritmos_single=['MultinomialNB']
-        mejor_acc=['',0]
-        mejor_f1=['',0]
-        mejor_precis=['',0]
-        mejor_rec=['',0]
         for repo in id_repositorios:
             log.write('************** Repositorio '+str(repo)+' **************'+'\n')
             y_test=[]
+            mejor_acc=['',0]
+            mejor_f1=['',0]
+            mejor_precis=['',0]
+            mejor_rec=['',0]
             issues=Almacen.sacarRepositorios(repo).issues
             print(repo)
             for prediction in range(len(issues)):
