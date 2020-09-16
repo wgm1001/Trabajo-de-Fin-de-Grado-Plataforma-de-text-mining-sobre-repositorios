@@ -62,6 +62,7 @@ def pruebaEficiencia():
                 tiempo_pred+=time()-t0
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
+                print(np.shape(pred),np.shape(y))
                 accuracy=jaccard_score(y, pred,average='micro')  
                 if accuracy>mejor_acc[1]:
                     mejor_acc[1]=accuracy
@@ -99,6 +100,7 @@ def pruebaEficiencia():
                 log.write('Entrenamiento %0.5fs' % (tiempo_train)+' Prediccion %0.5fs' %(tiempo_pred)+'\n')
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
+                print(np.shape(pred),np.shape(y))
                 accuracy=jaccard_score(y, pred,average='micro')  
                 if accuracy>mejor_acc[1]:
                     mejor_acc[1]=accuracy
@@ -133,8 +135,10 @@ def pruebaEficiencia():
                 for i in issues:
                      pred.append(clasificador.predecir([str(i.title)+' '+str(i.description)+' '+str(i.state)+' '+str(i.notes)]))
                 tiempo_pred+=time()-t0
+                log.write('Entrenamiento %0.5fs' % (tiempo_train)+' Prediccion %0.5fs' %(tiempo_pred)+'\n')
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
+                print(np.shape(pred),np.shape(y))
 #                aciertos=0
 #                for prediction in range(len(pred)):
 #                    if pred[prediction][0] in issues[prediction].labels or (pred[prediction][0]=='Sin etiqueta' and not issues[prediction].labels):
