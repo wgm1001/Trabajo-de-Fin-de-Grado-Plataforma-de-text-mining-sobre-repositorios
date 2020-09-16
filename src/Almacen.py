@@ -64,7 +64,7 @@ class Almacen:
     def sacarModelo(repositorios=None):
         con = Almacen.getCon() 
         try:
-            cursorModelo = con.cursor(prepared=True)
+            cursorModelo = con.cursor()
             if repositorios is not None:
                 sql_select_query = ' SELECT modelo FROM modelos where idProyectos=\''+str(repositorios)+'\' and momento=(select max(momento) from modelos where idProyectos=\''+str(repositorios)+'\')'
             else:
@@ -151,4 +151,4 @@ class Almacen:
             Almacen.conexion['db']=parametros[7]
             Almacen.conexion['port']=parametros[9]
             Almacen.con_cargada=True
-        return mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password')
+        return mysql.connector.connect(host=Almacen.conexion['host'],port=Almacen.conexion['port'], user=Almacen.conexion['user'], passwd=Almacen.conexion['passwd'], db=Almacen.conexion['db'],auth_plugin='mysql_native_password',use_pure=True)

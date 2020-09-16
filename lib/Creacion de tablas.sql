@@ -1,4 +1,4 @@
-CREATE SCHEMA `TFG` ;
+CREATE SCHEMA `TFG`  DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ; 
 CREATE TABLE `TFG`.`repositorios` (
   `idProyecto` INT NOT NULL,
   `Nombre` VARCHAR(45) NULL,
