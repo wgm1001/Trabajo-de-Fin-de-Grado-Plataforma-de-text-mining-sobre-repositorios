@@ -61,11 +61,9 @@ class TranscriptorMultiClass:
     def recuperar(self,y):
         fin=[]
         for i in range(len(y)):
-            temp=[]
             for x in range(len(self.labels)):
                 if y[i][x]==1:
-                    temp.append(self.labels[x])
-            fin.append(temp)
+                    fin.append(self.labels[x])
         return fin
     
     def __checkArgs(self,metodo,idioma):

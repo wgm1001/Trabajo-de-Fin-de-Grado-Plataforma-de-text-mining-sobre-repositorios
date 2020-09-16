@@ -1,0 +1,121 @@
+---------Prueba de eficiencia hecha el 2020-09-15 03:48:55.475167---------
+************** Repositorio 19766159 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.05701s Prediccion 0.00099sAccuracy score: 1.0000000
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 0.05201s Prediccion 0.00100sAccuracy score: 1.0000000
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.05133s Prediccion 0.00400sAccuracy score: 0.5000000
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 0.12200s Prediccion 0.04000sAccuracy score: 1.0000000
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.05501s Prediccion 0.00200sAccuracy score: 0.1666667
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 0.05200s Prediccion 0.00200sAccuracy score: 0.0000000
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 0.05100s Prediccion 0.00900sAccuracy score: 0.0000000
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 0.26204s Prediccion 0.11904sAccuracy score: 0.0000000
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.05401s Prediccion 0.00399sAccuracy score: 0.0000000 
+Accuracy mejor con 1.0000000 es MultinomialNB
+************** Repositorio 183616 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 1.69242s Prediccion 0.45237sAccuracy score: 0.8141711
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 31.12801s Prediccion 9.88225sAccuracy score: 0.5989305
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 2.42522s Prediccion 12.11599sAccuracy score: 0.6791444
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 8.34828s Prediccion 5.52379sAccuracy score: 1.0000000
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 4.21999s Prediccion 2.36155sAccuracy score: 0.5882353
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 118.78540s Prediccion 95.53182sAccuracy score: 0.5882353
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 56.77464s Prediccion 386.98712s Accuracy score: 0.5868984
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 57.77959s Prediccion 196.12792s Accuracy score: 0.5882353
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 3.03787s Prediccion 4.43681s Accuracy score: 0.0000000 
+Accuracy mejor con 1.0000000 es MultinomialNB
+************** Repositorio 8860457 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.32999s Prediccion 0.18100sAccuracy score: 0.8772504
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 4.69701s Prediccion 2.22412sAccuracy score: 0.6595745
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.73699s Prediccion 3.52698sAccuracy score: 0.5777414
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 2.06307s Prediccion 4.49602sAccuracy score: 0.9950900
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.81377s Prediccion 0.91811sAccuracy score: 0.4402619
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 24.11643s Prediccion 9.40405sAccuracy score: 0.4435352
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 9.93983s Prediccion 66.03206sAccuracy score: 0.4435352
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 13.52984s Prediccion 84.98727sAccuracy score: 0.4435352
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.58699s Prediccion 1.74739s
+Accuracy score: 0.0000000 Accuracy mejor con 1.0000000 es MultinomialNB
+************** Repositorio 6094330 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.38699s Prediccion 0.11201sAccuracy score: 0.9032258
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 4.78456s Prediccion 1.19532sAccuracy score: 0.6627566
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.67066s Prediccion 1.83316sAccuracy score: 0.6832845
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 2.50679s Prediccion 2.40423sAccuracy score: 1.0000000
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.63601s Prediccion 0.67408sAccuracy score: 0.2815249
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 11.18426s Prediccion 3.30034sAccuracy score: 0.2815249
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 6.11579s Prediccion 30.83481sAccuracy score: 0.2815249
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 8.12531s Prediccion 65.42517sAccuracy score: 0.2815249
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.48999s Prediccion 1.33801sAccuracy score: 0.0000000 
+Accuracy mejor con 1.0000000 es MultinomialNB*
+************* Repositorio 3472737 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 222.42838s Prediccion 6.78337sAccuracy score: 0.7601516
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 2000.49655s Prediccion 351.03345sAccuracy score: 0.4677856
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 53.35339s Prediccion 474.80449sAccuracy score: 0.7168381
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 223.66458s Prediccion 13.68218sAccuracy score: 1.0000000
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 154.25167s Prediccion 18.26688sAccuracy score: 0.1185707
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 2316.67060s Prediccion 355.63087sAccuracy score: 0.1185707
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 1470.64445s Prediccion 19040.93013sAccuracy score: 0.1185707
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 809.20316s Prediccion 1265.93475sAccuracy score: 0.1185707
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 101.62939s Prediccion 35.89824sAccuracy score: 0.0000000 
+Accuracy mejor con 1.0000000 es MultinomialNB
+************** Repositorio 36189 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 37.22362s Prediccion 3.20455sAccuracy score: 0.7447968
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 439.41940s Prediccion 125.95426sAccuracy score: 0.6253717
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 18.15575s Prediccion 164.98572sAccuracy score: 0.6793855
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 48.52784s Prediccion 14.36913sAccuracy score: 1.0000000
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 62.11836s Prediccion 10.34718sAccuracy score: 0.5312190
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 1407.73331s Prediccion 114.43469sAccuracy score: 0.5312190
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 655.42095s Prediccion 9531.01920sAccuracy score: 0.5312190
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 860.86340s Prediccion 1479.86121sAccuracy score: 0.5312190
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 77.28080s Prediccion 47.79367sAccuracy score: 0.0000000 
+Accuracy mejor con 1.0000000 es MultinomialNB

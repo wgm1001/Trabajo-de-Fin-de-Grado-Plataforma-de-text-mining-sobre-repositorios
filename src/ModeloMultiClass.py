@@ -18,10 +18,7 @@ class ModeloMultiClass:
         self.clasificador.fit(X, y)
 
     def predecir(self,X):
-        pred=[]
-        pred=self.clasificador.predict(X).tolist()
-        if not pred:
-            pred.append('Sin etiqueta')
+        pred=self.clasificador.predict(X)
         return pred
     
 """
