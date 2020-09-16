@@ -81,7 +81,7 @@ def recuperarModelo():
     formulario=FormularioModelo(request.form) 
     if request.method =='POST':
         mod=ServidorLogica.sacarModelo(session['id'],formulario.modelos.data)
-        session['modelo']=[mod.repositorios,mod.stopW,mod.idioma,mod.comentarios,mod.metodo,mod.sinEtiqueta]
+        session['modelo']=[mod.repositorios,mod.stopW,mod.idioma,mod.comentarios,mod.metodo,mod.sinEtiqueta,mod.modelo,mod.MultiManual]
         return redirect(url_for('predIssue',com=mod.comentarios))
     return render_template('recuperarModelo.html',formulario=formulario)
 

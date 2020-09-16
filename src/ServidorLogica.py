@@ -35,7 +35,7 @@ class ServidorLogica:
                 pipe.send(404)
             if str(e)=='Permisos insuficientes':
                 pipe.send(401)
-            raise
+            pipe.send(e)
 
     @staticmethod
     def crearModelo(id_ses,modelo,MultiManual):
@@ -53,7 +53,7 @@ class ServidorLogica:
             ServidorLogica.log(str(e))
             if str(e)=='Argumentos incorrectos':
                 pipe.send(400)
-            raise
+            pipe.send(e)
             
     @staticmethod
     def sacarModelo(id_ses,repositorios):
@@ -74,5 +74,7 @@ class ServidorLogica:
     @staticmethod
     def log(txt):
         log=open(ServidorLogica.ruta_error,"a")
-        log.write("Ha ocurrido un error ("+str(datetime.now())+"):\n"+txt)
-        
+        try:
+            log.write("Ha ocurrido un error ("+str(datetime.now())+"):\n"+txt)
+        finally:
+            log.close()
