@@ -37,9 +37,10 @@ class TranscriptorMultiClass:
                         if sinEtiqueta:
                             labels.append('Sin etiqueta') 
         y=np.array(labels)
-        for l in self.labels:
-            if l not in self.labels:
-                self.labels.append(l)
+        for lab in labels:
+            for l in lab:
+                if l not in self.labels:
+                    self.labels.append(l)
         binarizer=MultiLabelBinarizer().fit(y)
         y=binarizer.transform(y)
         tipoBolsa=TranscriptorMultiClass.switchTipoBolsa[metodo]
@@ -62,7 +63,7 @@ class TranscriptorMultiClass:
         for i in range(len(y)):
             temp=[]
             for x in range(len(self.labels)):
-                if y[i]==1:
+                if y[i][x]==1:
                     temp.append(self.labels[x])
             fin.append(temp)
         return fin
@@ -92,11 +93,7 @@ class TranscriptorMultiClassManual:
                         for c in i.notes:
                             temp+=' '+c
                     issues_text.append(temp)
-                    if len(i.labels)>0:
-                        labels.append(i.labels)
-                    else:
-                        if sinEtiqueta:
-                            labels.append('Sin etiqueta') 
+                    labels.append(i.labels)
         y=labels
         tipoBolsa=TranscriptorMultiClass.switchTipoBolsa[metodo]
         if stopW:

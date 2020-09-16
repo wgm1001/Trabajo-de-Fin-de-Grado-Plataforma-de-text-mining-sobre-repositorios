@@ -8,7 +8,6 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.multiclass import OneVsRestClassifier
 from src.ModeloSingleClass import ModeloSingleClass
 import numpy as np
-from sklearn.preprocessing import LabelBinarizer
 
 class ModeloMultiClass:
     switchAlgoritmo={'OneVsRest':OneVsRestClassifier}
@@ -19,7 +18,11 @@ class ModeloMultiClass:
         self.clasificador.fit(X, y)
 
     def predecir(self,X):
-        return self.clasificador.predict(X)
+        pred=[]
+        pred=self.clasificador.predict(X).tolist()
+        if not pred:
+            pred.append('Sin etiqueta')
+        return pred
     
 """
 @author: Willow Maui García Moreno
@@ -33,16 +36,17 @@ class ModeloMultiClassManual:
         self.clasificadores=dict()
         
     def entrenar(self,X,y):
+        temp_X=[]
+        for i in range(len(y)):
+            temp_X.append(X[i])
+        temp_X=np.array(temp_X)
         for etiquetas in y:
             for etiqueta in etiquetas:
                 if etiqueta not in self.clasificadores.keys():
-                    temp_X=[]
                     temp_Y=[]
                     self.clasificadores[etiqueta]=ModeloSingleClass.switchAlgoritmo[self.modelo]
                     for i in range(len(y)):
                         temp_Y.append(etiqueta in y[i])
-                        temp_X.append(X[i])
-                    temp_X=np.array(temp_X)
                     temp_Y=np.array(temp_Y)
                     self.clasificadores[etiqueta].fit(temp_X,temp_Y)
 
