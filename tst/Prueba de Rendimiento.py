@@ -17,7 +17,7 @@ from sklearn.preprocessing import MultiLabelBinarizer
 
 def pruebaEficiencia():
     id_repositorios=[19766159,183616,8860457,6094330,3472737,36189]
-    log=open('.'+os.path.sep+'Prueba Eficiencia.txt',"a")
+    log=open('.'+os.path.sep+'Prueba Desempeño.txt',"a")
     try:
         log.write("---------Prueba de eficiencia hecha el "+str(datetime.now())+"---------\n")
         from src.ModeloSingleClass import ModeloSingleClass

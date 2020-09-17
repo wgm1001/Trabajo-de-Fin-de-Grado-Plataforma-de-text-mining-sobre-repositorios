@@ -57,7 +57,7 @@ def predecir():
         prede= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe=pipe_env))
         prede.start()
         resp=pipe_rec.recv()
-        session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data]
+        session['modelo']=[formulario.repositorios.data,formulario.stopWords.data,formulario.idioma.data,formulario.comentarios.data,formulario.metodo.data,formulario.sinEtiqueta.data,formulario.modelo.data.strip(),formulario.multiManual.data]
         if resp != 200:
             return redirect(url_for('error_c',error_c=resp))
         return redirect(url_for('predIssue',com=formulario.comentarios.data))
