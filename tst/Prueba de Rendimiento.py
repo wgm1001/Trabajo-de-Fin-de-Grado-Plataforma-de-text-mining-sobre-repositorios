@@ -44,6 +44,7 @@ def pruebaEficiencia():
             for i in issues:
                 y_test.append(i.labels)
             for mod in algoritmos_single:
+                print(mod)
                 log.write('____Algoritmo '+mod+' sin multietiqueta_____'+'\n')
                 clasificador = Predictor(modelo=mod,MultiManual=False)
                 pred=[]
@@ -62,7 +63,7 @@ def pruebaEficiencia():
                 tiempo_pred+=time()-t0
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
-                print(np.shape(pred),np.shape(y))
+                log.write('Entrenamiento %0.5fs' % (tiempo_train)+' Prediccion %0.5fs' %(tiempo_pred)+'\n')
                 accuracy=jaccard_score(y, pred,average='micro')  
                 if accuracy>mejor_acc[1]:
                     mejor_acc[1]=accuracy
@@ -81,6 +82,7 @@ def pruebaEficiencia():
                     mejor_rec[0]=mod
                 log.write('Accuracy score: %0.7f' % accuracy+' F1 score: %0.7f' % f1+' Precision media score: %0.7f' % precis+' Recall score: %0.7f' % rec+'\n')    
             for mod in algoritmos_single:
+                print(mod)
                 log.write('____Algoritmo '+mod+' con multietiqueta_____'+'\n')
                 clasificador = Predictor(modelo=mod,MultiManual=True)
                 pred=[]
@@ -100,7 +102,6 @@ def pruebaEficiencia():
                 log.write('Entrenamiento %0.5fs' % (tiempo_train)+' Prediccion %0.5fs' %(tiempo_pred)+'\n')
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
-                print(np.shape(pred),np.shape(y))
                 accuracy=jaccard_score(y, pred,average='micro')  
                 if accuracy>mejor_acc[1]:
                     mejor_acc[1]=accuracy
@@ -119,6 +120,7 @@ def pruebaEficiencia():
                     mejor_rec[0]=mod
                 log.write('Accuracy score: %0.7f' % accuracy+' F1 score: %0.7f' % f1+' Precision media score: %0.7f' % precis+' Recall score: %0.7f' % rec+'\n')          
             for mod in algoritmos_multi:
+                print(mod)
                 log.write('____Algoritmo '+mod+' sin multietiqueta_____'+'\n')
                 clasificador = Predictor(modelo=mod,MultiManual=False)
                 pred=[]
@@ -138,7 +140,6 @@ def pruebaEficiencia():
                 log.write('Entrenamiento %0.5fs' % (tiempo_train)+' Prediccion %0.5fs' %(tiempo_pred)+'\n')
                 pred=np.array(pred)
                 pred=binarizer.transform(pred)
-                print(np.shape(pred),np.shape(y))
 #                aciertos=0
 #                for prediction in range(len(pred)):
 #                    if pred[prediction][0] in issues[prediction].labels or (pred[prediction][0]=='Sin etiqueta' and not issues[prediction].labels):
