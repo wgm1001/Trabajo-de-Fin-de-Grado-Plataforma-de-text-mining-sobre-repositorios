@@ -20,6 +20,7 @@ class ServidorLogica:
         url=url.split('/')
         if url[2]!='gitlab.com':
             pipe.send(400)
+            return 1
         url=url[3]+'/'+url[4]
         try:
             if 'token' in argumentos.keys():
@@ -33,8 +34,10 @@ class ServidorLogica:
             ServidorLogica.log(str(e))
             if str(e)=='Proyecto no encontrado':
                 pipe.send(404)
+                return 1
             if str(e)=='Permisos insuficientes':
                 pipe.send(401)
+                return 1
             pipe.send(e)
 
     @staticmethod
@@ -53,6 +56,7 @@ class ServidorLogica:
             ServidorLogica.log(str(e))
             if str(e)=='Argumentos incorrectos':
                 pipe.send(400)
+                return 1
             pipe.send(e)
             
     @staticmethod
