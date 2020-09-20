@@ -1,0 +1,229 @@
+---------Prueba de eficiencia hecha el 2020-09-17 18:38:53.041783---------
+************** Repositorio 19766159 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.06101s Prediccion 0.00099s
+Accuracy score: 0.8571429 F1 score: 0.9230769 Precision media score: 1.0000000 Recall score: 0.8571429
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 0.06000s Prediccion 0.00100s
+Accuracy score: 0.8571429 F1 score: 0.9230769 Precision media score: 1.0000000 Recall score: 0.8571429
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.05799s Prediccion 0.00301s
+Accuracy score: 0.3000000 F1 score: 0.4615385 Precision media score: 0.5000000 Recall score: 0.4285714
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 0.12653s Prediccion 0.04200s
+Accuracy score: 0.8571429 F1 score: 0.9230769 Precision media score: 1.0000000 Recall score: 0.8571429
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.05799s Prediccion 0.00100s
+Accuracy score: 0.1111111 F1 score: 0.2000000 Precision media score: 0.3333333 Recall score: 0.1428571
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 0.05885s Prediccion 0.00200s
+Accuracy score: 0.0000000 F1 score: 0.0000000 Precision media score: 0.0000000 Recall score: 0.0000000
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 0.05801s Prediccion 0.00800s
+Accuracy score: 0.0000000 F1 score: 0.0000000 Precision media score: 0.0000000 Recall score: 0.0000000
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 0.27654s Prediccion 0.12000s
+Accuracy score: 0.2500000 F1 score: 0.4000000 Precision media score: 0.6666667 Recall score: 0.2857143
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.05999s Prediccion 0.00401s
+Accuracy score: 0.4000000 F1 score: 0.5714286 Precision media score: 0.5714286 Recall score: 0.5714286
+ Accuracy mejor con 0.8571429 es MultinomialNB F1 mejor con 0.9230769 es MultinomialNB Recall mejor con 0.8571429 es MultinomialNB Precision  mejor con 1.0000000 es MultinomialNB
+************** Repositorio 183616 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 1.80753s Prediccion 0.82023s
+Accuracy score: 0.5592287 F1 score: 0.7173145 Precision media score: 0.8141711 Recall score: 0.6410526
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 34.06570s Prediccion 11.02722s
+Accuracy score: 0.3584000 F1 score: 0.5276796 Precision media score: 0.5989305 Recall score: 0.4715789
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 2.40453s Prediccion 13.20249s
+Accuracy score: 0.4268908 F1 score: 0.5983510 Precision media score: 0.6791444 Recall score: 0.5347368
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 10.25135s Prediccion 5.96122s
+Accuracy score: 0.7873684 F1 score: 0.8810365 Precision media score: 1.0000000 Recall score: 0.7873684
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 2.58550s Prediccion 2.12654s
+Accuracy score: 0.2912259 F1 score: 0.4510843 Precision media score: 0.4160000 Recall score: 0.4926316
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 55.10589s Prediccion 83.26268s
+Accuracy score: 0.3497615 F1 score: 0.5182568 Precision media score: 0.5882353 Recall score: 0.4631579
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 39.94750s Prediccion 363.35941s
+Accuracy score: 0.3363775 F1 score: 0.5034169 Precision media score: 0.5483871 Recall score: 0.4652632
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 47.35178s Prediccion 153.36101s
+Accuracy score: 0.2345906 F1 score: 0.3800298 Precision media score: 0.2941176 Recall score: 0.5368421
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 3.48602s Prediccion 5.19308s
+Accuracy score: 0.0044030 F1 score: 0.0087674 Precision media score: 0.0058060 Recall score: 0.0178947
+ Accuracy mejor con 0.7873684 es RandomForest F1 mejor con 0.8810365 es RandomForest Recall mejor con 0.7873684 es RandomForest Precision  mejor con 1.0000000 es RandomForest
+************** Repositorio 8860457 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.36000s Prediccion 0.16551s
+Accuracy score: 0.7156208 F1 score: 0.8342412 Precision media score: 0.8772504 Recall score: 0.7952522
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 6.01458s Prediccion 3.00607s
+Accuracy score: 0.4569161 F1 score: 0.6272374 Precision media score: 0.6595745 Recall score: 0.5979228
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.71601s Prediccion 4.47013s
+Accuracy score: 0.3787554 F1 score: 0.5494163 Precision media score: 0.5777414 Recall score: 0.5237389
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 2.38209s Prediccion 4.79208s
+Accuracy score: 0.8814056 F1 score: 0.9369650 Precision media score: 0.9852700 Recall score: 0.8931751
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.47400s Prediccion 0.66155s
+Accuracy score: 0.2573321 F1 score: 0.4093303 Precision media score: 0.4152672 Recall score: 0.4035608
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 10.75461s Prediccion 5.70460s
+Accuracy score: 0.2672584 F1 score: 0.4217899 Precision media score: 0.4435352 Recall score: 0.4020772
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 5.17515s Prediccion 48.91737s
+Accuracy score: 0.2672584 F1 score: 0.4217899 Precision media score: 0.4435352 Recall score: 0.4020772
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 8.84070s Prediccion 50.06459s
+Accuracy score: 0.2648752 F1 score: 0.4188164 Precision media score: 0.4285714 Recall score: 0.4094955
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.67999s Prediccion 1.89702s
+Accuracy score: 0.0073378 F1 score: 0.0145688 Precision media score: 0.0090645 Recall score: 0.0370920
+ Accuracy mejor con 0.8814056 es RandomForest F1 mejor con 0.9369650 es RandomForest Recall mejor con 0.8931751 es RandomForest Precision  mejor con 0.9852700 es RandomForest
+************** Repositorio 6094330 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 0.42999s Prediccion 0.14500s
+Accuracy score: 0.5000000 F1 score: 0.6666667 Precision media score: 0.9032258 Recall score: 0.5283019
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 5.51700s Prediccion 1.61300s
+Accuracy score: 0.3237822 F1 score: 0.4891775 Precision media score: 0.6627566 Recall score: 0.3876501
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 0.71901s Prediccion 2.40900s
+Accuracy score: 0.3371925 F1 score: 0.5043290 Precision media score: 0.6832845 Recall score: 0.3996569
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 3.60863s Prediccion 2.70054s
+Accuracy score: 0.5849057 F1 score: 0.7380952 Precision media score: 1.0000000 Recall score: 0.5849057
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 0.45599s Prediccion 0.52452s
+Accuracy score: 0.1159420 F1 score: 0.2077922 Precision media score: 0.2815249 Recall score: 0.1646655
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 8.09053s Prediccion 2.54811s
+Accuracy score: 0.1159420 F1 score: 0.2077922 Precision media score: 0.2815249 Recall score: 0.1646655
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 4.04500s Prediccion 27.80335s
+Accuracy score: 0.1159420 F1 score: 0.2077922 Precision media score: 0.2815249 Recall score: 0.1646655
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 5.66600s Prediccion 46.62424s
+Accuracy score: 0.1172986 F1 score: 0.2099682 Precision media score: 0.2750000 Recall score: 0.1698113
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 0.56099s Prediccion 1.54508s
+Accuracy score: 0.0121304 F1 score: 0.0239700 Precision media score: 0.0212766 Recall score: 0.0274443
+ Accuracy mejor con 0.5849057 es RandomForest F1 mejor con 0.7380952 es RandomForest Recall mejor con 0.5849057 es RandomForest Precision  mejor con 1.0000000 es RandomForest
+************** Repositorio 3472737 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 236.98142s Prediccion 9.65301s
+Accuracy score: 0.2732581 F1 score: 0.4292265 Precision media score: 0.7601516 Recall score: 0.2990415
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 2200.81975s Prediccion 385.31816s
+Accuracy score: 0.1521663 F1 score: 0.2641394 Precision media score: 0.4677856 Recall score: 0.1840256
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 53.78648s Prediccion 544.51506s
+Accuracy score: 0.2537371 F1 score: 0.4047692 Precision media score: 0.7168381 Recall score: 0.2820021
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 243.47863s Prediccion 15.01872s
+Accuracy score: 0.3933972 F1 score: 0.5646591 Precision media score: 1.0000000 Recall score: 0.3933972
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 103.72353s Prediccion 17.27981s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 2036.58259s Prediccion 340.86937s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 1303.38407s Prediccion 18478.00442s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 839.13015s Prediccion 1206.82376s
+Accuracy score: 0.0347677 F1 score: 0.0671990 Precision media score: 0.1148301 Recall score: 0.0474973
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 124.07131s Prediccion 36.62875s
+Accuracy score: 0.0187061 F1 score: 0.0367251 Precision media score: 0.0407263 Recall score: 0.0334398
+ Accuracy mejor con 0.3933972 es RandomForest F1 mejor con 0.5646591 es RandomForest Recall mejor con 0.3933972 es RandomForest Precision  mejor con 1.0000000 es RandomForest
+************** Repositorio 36189 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 40.90787s Prediccion 2.98210s
+Accuracy score: 0.4297970 F1 score: 0.6012000 Precision media score: 0.7447968 Recall score: 0.5040241
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 449.79903s Prediccion 128.16888s
+Accuracy score: 0.3376137 F1 score: 0.5048000 Precision media score: 0.6253717 Recall score: 0.4232059
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 17.58970s Prediccion 175.75340s
+Accuracy score: 0.3777900 F1 score: 0.5484000 Precision media score: 0.6793855 Recall score: 0.4597586
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 53.68195s Prediccion 15.48990s
+Accuracy score: 0.6761649 F1 score: 0.8068000 Precision media score: 0.9995045 Recall score: 0.6763917
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 53.28309s Prediccion 9.88843s
+Accuracy score: 0.2711950 F1 score: 0.4266772 Precision media score: 0.5205215 Recall score: 0.3615023
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 946.19347s Prediccion 216.29943s
+Accuracy score: 0.2729124 F1 score: 0.4288000 Precision media score: 0.5312190 Recall score: 0.3594903
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 848.00207s Prediccion 7475.22429s
+Accuracy score: 0.2729124 F1 score: 0.4288000 Precision media score: 0.5312190 Recall score: 0.3594903
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 329.09381s Prediccion 741.78670s
+Accuracy score: 0.2695980 F1 score: 0.4246982 Precision media score: 0.5181072 Recall score: 0.3598256
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 51.04547s Prediccion 21.96582s
+Accuracy score: 0.0143217 F1 score: 0.0282390 Precision media score: 0.0179086 Recall score: 0.0667337
+ Accuracy mejor con 0.6761649 es RandomForest F1 mejor con 0.8068000 es RandomForest Recall mejor con 0.6763917 es RandomForest Precision  mejor con 0.9995045 es RandomForest
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 2244.04118s Prediccion 428.63899s
+Accuracy score: 0.1521663 F1 score: 0.2641394 Precision media score: 0.4677856 Recall score: 0.1840256
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 53.30008s Prediccion 512.58064s
+Accuracy score: 0.2537371 F1 score: 0.4047692 Precision media score: 0.7168381 Recall score: 0.2820021
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 237.90975s Prediccion 14.92235s
+Accuracy score: 0.3933972 F1 score: 0.5646591 Precision media score: 1.0000000 Recall score: 0.3933972
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 127.47486s Prediccion 18.61713s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 1879.52784s Prediccion 368.72931s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 1287.33014s Prediccion 18712.06173s
+Accuracy score: 0.0346355 F1 score: 0.0669520 Precision media score: 0.1185707 Recall score: 0.0466454
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 821.79957s Prediccion 1704.52722s
+Accuracy score: 0.0347677 F1 score: 0.0671990 Precision media score: 0.1148301 Recall score: 0.0474973
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 187.72211s Prediccion 71.30370s
+Accuracy score: 0.0073010 F1 score: 0.0144963 Precision media score: 0.0167457 Recall score: 0.0127796
+ Accuracy mejor con 0.3933972 es RandomForest F1 mejor con 0.5646591 es RandomForest Recall mejor con 0.3933972 es RandomForest Precision  mejor con 1.0000000 es RandomForest
+************** Repositorio 36189 **************
+____Algoritmo MultinomialNB sin multietiqueta_____
+Entrenamiento 53.05115s Prediccion 7.08115s
+Accuracy score: 0.4297970 F1 score: 0.6012000 Precision media score: 0.7447968 Recall score: 0.5040241
+____Algoritmo SVM sin multietiqueta_____
+Entrenamiento 530.57308s Prediccion 137.10922s
+Accuracy score: 0.3376137 F1 score: 0.5048000 Precision media score: 0.6253717 Recall score: 0.4232059
+____Algoritmo KNN sin multietiqueta_____
+Entrenamiento 17.22078s Prediccion 179.56105s
+Accuracy score: 0.3777900 F1 score: 0.5484000 Precision media score: 0.6793855 Recall score: 0.4597586
+____Algoritmo RandomForest sin multietiqueta_____
+Entrenamiento 52.84179s Prediccion 15.61248s
+Accuracy score: 0.6767270 F1 score: 0.8072000 Precision media score: 1.0000000 Recall score: 0.6767270
+____Algoritmo MultinomialNB con multietiqueta_____
+Entrenamiento 41.54901s Prediccion 9.96803s
+Accuracy score: 0.2711950 F1 score: 0.4266772 Precision media score: 0.5205215 Recall score: 0.3615023
+____Algoritmo SVM con multietiqueta_____
+Entrenamiento 780.70616s Prediccion 112.44840s
+Accuracy score: 0.2729124 F1 score: 0.4288000 Precision media score: 0.5312190 Recall score: 0.3594903
+____Algoritmo KNN con multietiqueta_____
+Entrenamiento 524.05160s Prediccion 7436.99796s
+Accuracy score: 0.2729124 F1 score: 0.4288000 Precision media score: 0.5312190 Recall score: 0.3594903
+____Algoritmo RandomForest con multietiqueta_____
+Entrenamiento 271.33526s Prediccion 732.17471s
+Accuracy score: 0.2695980 F1 score: 0.4246982 Precision media score: 0.5181072 Recall score: 0.3598256
+____Algoritmo OneVsRest sin multietiqueta_____
+Entrenamiento 45.63539s Prediccion 21.51125s
+Accuracy score: 0.0137255 F1 score: 0.0270793 Precision media score: 0.0172178 Recall score: 0.0633803
+ Accuracy mejor con 0.6767270 es RandomForest F1 mejor con 0.8072000 es RandomForest Recall mejor con 0.6767270 es RandomForest Precision  mejor con 1.0000000 es RandomForest

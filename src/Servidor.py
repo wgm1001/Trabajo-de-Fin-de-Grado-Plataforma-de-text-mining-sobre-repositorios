@@ -52,7 +52,7 @@ def extraccionCorrecta():
 def predecir():
     formulario=FormularioPrediccion(request.form) 
     if request.method =='POST':
-        ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip(),MultiManual=formulario.multiManual.data)
+        ServidorLogica.crearModelo(session['id'],formulario.modelo.data.strip(),MultiManual=False) # MultiManual=formulario.multiManual.data
         pipe_rec,pipe_env=Pipe(False)
         prede= Process(target=ServidorLogica.entrenarModelo(session['id'],repositorios=formulario.repositorios.data,stopW=formulario.stopWords.data,idioma=formulario.idioma.data,comentarios=formulario.comentarios.data,metodo=formulario.metodo.data,sinEtiqueta=formulario.sinEtiqueta.data,pipe=pipe_env))
         prede.start()

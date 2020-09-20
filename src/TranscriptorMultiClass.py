@@ -64,6 +64,8 @@ class TranscriptorMultiClass:
             for x in range(len(self.labels)):
                 if y[i][x]==1:
                     fin.append(self.labels[x])
+        if not fin:
+            fin.append('Sin Etiqueta')
         return fin
     
     def __checkArgs(self,metodo,idioma):
