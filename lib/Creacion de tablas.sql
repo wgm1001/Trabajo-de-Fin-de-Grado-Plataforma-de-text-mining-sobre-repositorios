@@ -29,3 +29,9 @@ CREATE TABLE `TFG`.`repositorios` (
   `momento` DATETIME NOT NULL,
   `modelo` LONGBLOB NOT NULL,
   PRIMARY KEY (`idProyectos`, `momento`));
+ALTER TABLE `TFG`.`issues` 
+ADD CONSTRAINT `repositorio`
+  FOREIGN KEY (`idProyecto`)
+  REFERENCES `TFG`.`repositorios` (`idProyecto`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;
