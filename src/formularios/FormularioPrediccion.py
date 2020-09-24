@@ -6,8 +6,10 @@ Formulario utilizado para intercambiar los datos entre el cliente y el servidor 
 entrenamiento del modelo
 """
 from wtforms import Form,SelectMultipleField, SelectField,BooleanField,validators
-from src.ModeloSingleClass import ModeloSingleClass
-from src.ModeloMultiClass import ModeloMultiClass
+import sys
+sys.path.append("..") 
+from ModeloSingleClass import ModeloSingleClass
+from ModeloMultiClass import ModeloMultiClass
 from Almacen import Almacen
 from nltk.corpus import stopwords
 from TranscriptorSingleClass import TranscriptorSingleClass

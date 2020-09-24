@@ -6,6 +6,8 @@ Formulario utilizado para intercambiar los datos entre el cliente y el servidor 
 modelos guardados
 """
 from wtforms import Form, SelectField,validators
+import sys
+sys.path.append("..") 
 from Almacen import Almacen
 
 class FormularioModelo(Form):  
