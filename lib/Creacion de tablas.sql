@@ -30,8 +30,14 @@ CREATE TABLE `TFG`.`repositorios` (
   `modelo` LONGBLOB NOT NULL,
   PRIMARY KEY (`idProyectos`, `momento`));
 ALTER TABLE `TFG`.`issues` 
-ADD CONSTRAINT `repositorio`
-  FOREIGN KEY (`idProyecto`)
-  REFERENCES `TFG`.`repositorios` (`idProyecto`)
+ADD CONSTRAINT `repositorios`
+  FOREIGN KEY (`idProyecto` , `momento`)
+  REFERENCES `TFG`.`repositorios` (`idProyecto` , `momento`)
+  ON DELETE CASCADE
+  ON UPDATE NO ACTION;
+  ALTER TABLE `TFG`.`labels` 
+ADD CONSTRAINT `proyecto-label`
+  FOREIGN KEY ( `idProyecto`,`momento` )
+  REFERENCES `TFG`.`repositorios` (`idProyecto`,`momento` )
   ON DELETE CASCADE
   ON UPDATE NO ACTION;
